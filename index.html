@@ -18,7 +18,7 @@
     <style>
         :root {
             /* --- BRAND COLORS --- */
-            --col-x: #000000; 
+            --col-x: #000000; /* Always Black for X/Twitter */
             --col-telegram: #26A5E4;
             --col-discord: #5865F2;
             --col-content: #f43f5e;
@@ -43,7 +43,7 @@
             --dock-bg: rgba(255, 255, 255, 0.55);
             --dock-border: rgba(255, 255, 255, 0.7);
             
-            --card-shadow: 0 10px 40px rgba(37, 99, 235, 0.08); /* Blue-ish subtle shadow */
+            --card-shadow: 0 10px 40px rgba(37, 99, 235, 0.08);
             
             /* STATUS */
             --status-green: #00e676;
@@ -83,7 +83,9 @@
             --contact-hover: rgba(255,255,255,0.15);
             
             --blob-1: #7c3aed; --blob-2: #00d4ff; --blob-3: #ff0055;
-            --col-x: #ffffff; 
+            
+            /* FIXED: X LOGO COLOR IN DARK MODE IS NOW BLACK */
+            --col-x: #000000; 
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
@@ -247,6 +249,13 @@
         }
         
         /* NOISE REMOVED: Cleaner look, better performance */
+        .card::after, .dock::after, .header::after {
+            content: ""; position: absolute; inset: 0; border-radius: inherit;
+            background-image: radial-gradient(rgba(0,0,0,0.1) 1px, transparent 1px);
+            background-size: 4px 4px; 
+            opacity: 0.3; pointer-events: none;
+        }
+
         .card:hover { transform: translateY(-4px) translate3d(0,0,0); border-color: var(--primary-accent); }
         
         @keyframes fadeInUp { from { opacity: 0; transform: translate3d(0, 20px, 0); } to { opacity: 1; transform: translate3d(0, 0, 0); } }
