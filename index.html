@@ -13,7 +13,6 @@
 </head>
 <body>
 
-<!-- Preloader -->
 <div id="preloader">
   <div class="preloader-inner">
     <div class="preloader-kanji">丸</div>
@@ -22,16 +21,12 @@
   </div>
 </div>
 
-<!-- Canvas Background -->
 <canvas id="bgCanvas"></canvas>
 
-<!-- Floating Sakura Petals Container -->
 <div id="sakura-container"></div>
 
-<!-- Decorative Grid Overlay -->
 <div class="grid-overlay"></div>
 
-<!-- Sticky Header / Navigation -->
 <header id="mainHeader" class="site-header">
   <div class="header-inner">
     <a href="#hero" class="header-logo">
@@ -55,7 +50,6 @@
   </div>
 </header>
 
-<!-- Mobile Navigation Overlay -->
 <div class="mobile-nav-overlay" id="mobileNavOverlay">
   <div class="mobile-nav-content">
     <a href="#hero" class="mobile-nav-link" data-index="01">Home</a>
@@ -74,11 +68,9 @@
   </div>
 </div>
 
-<!-- ===================== HERO SECTION ===================== -->
 <section id="hero" class="hero-section">
   <div class="hero-container">
     
-    <!-- Left Column: Typography -->
     <div class="hero-left">
       <div class="hero-tag fade-up">
         <span class="tag-line"></span>
@@ -122,7 +114,6 @@
       </div>
     </div>
 
-    <!-- Right Column: Profile Image -->
     <div class="hero-right fade-up" data-delay="200">
       <div class="profile-frame">
         <div class="frame-corner frame-tl"></div>
@@ -142,7 +133,6 @@
           <span>Available Now</span>
         </div>
       </div>
-      <!-- Decorative elements around image -->
       <div class="hero-deco-circle"></div>
       <div class="hero-deco-plus">+</div>
       <div class="hero-deco-dots">
@@ -154,21 +144,17 @@
 
   </div>
 
-  <!-- Scroll indicator -->
   <div class="scroll-indicator fade-up" data-delay="600">
     <div class="scroll-line"></div>
     <span>Scroll Down</span>
   </div>
 
-  <!-- Hero side text -->
   <div class="hero-side-text">EST. 2018 — CRYPTO & WEB3</div>
 </section>
 
-<!-- ===================== ABOUT SECTION ===================== -->
 <section id="about" class="about-section">
   <div class="section-container">
     
-    <!-- Section Header -->
     <div class="section-header">
       <div class="section-label fade-up">
         <span class="label-num">01</span>
@@ -181,7 +167,6 @@
       </h2>
     </div>
 
-    <!-- About Content: Editorial / Newspaper Style -->
     <div class="about-grid">
       
       <div class="about-main fade-up" data-delay="150">
@@ -218,12 +203,10 @@
     </div>
   </div>
 
-  <!-- Decorative Elements -->
   <div class="about-deco-line"></div>
   <div class="about-deco-kanji">信</div>
 </section>
 
-<!-- ===================== SKILLS SECTION ===================== -->
 <section id="skills" class="skills-section">
   <div class="section-container">
     
@@ -316,11 +299,9 @@
     </div>
   </div>
 
-  <!-- Decorative -->
   <div class="skills-deco-kanji">技</div>
 </section>
 
-<!-- ===================== EXPERIENCE SECTION ===================== -->
 <section id="experience" class="experience-section">
   <div class="section-container">
     
@@ -398,7 +379,6 @@
 
     </div>
 
-    <!-- Education -->
     <div class="education-block fade-up" data-delay="350">
       <div class="edu-deco">学</div>
       <div class="edu-content">
@@ -414,7 +394,6 @@
   <div class="experience-deco-kanji">歴</div>
 </section>
 
-<!-- ===================== CONTACT SECTION ===================== -->
 <section id="contact" class="contact-section">
   <div class="section-container">
     
@@ -434,7 +413,6 @@
 
     <div class="contact-grid">
 
-      <!-- Contact Info Cards -->
       <div class="contact-info fade-up" data-delay="200">
         
         <a href="https://x.com/maruf_ix" target="_blank" rel="noopener" class="contact-card">
@@ -474,7 +452,6 @@
 
       </div>
 
-      <!-- Contact Form -->
       <div class="contact-form-wrapper fade-up" data-delay="300">
         <form class="contact-form" id="contactForm">
           <div class="form-row">
@@ -528,7 +505,6 @@
   <div class="contact-deco-kanji">繋</div>
 </section>
 
-<!-- ===================== FOOTER ===================== -->
 <footer class="site-footer">
   <div class="footer-inner">
     <div class="footer-top">
@@ -550,12 +526,12 @@
       <div class="visitor-counter" id="visitorCounter">
         <div class="vc-item">
           <span class="vc-label">Today</span>
-          <span class="vc-number" id="todayVisits">—</span>
+          <span class="vc-number" id="todayVisits">...</span>
         </div>
         <div class="vc-divider"></div>
         <div class="vc-item">
           <span class="vc-label">Total</span>
-          <span class="vc-number" id="totalVisits">—</span>
+          <span class="vc-number" id="totalVisits">...</span>
         </div>
         <div class="vc-live-dot"></div>
       </div>
@@ -563,11 +539,48 @@
   </div>
 </footer>
 
-<!-- Back to top button -->
 <button class="back-to-top" id="backToTop" aria-label="Back to top">
   <i class="fas fa-arrow-up"></i>
 </button>
 
 <script src="js/main.js"></script>
+
+<script>
+  (function() {
+    // Unique Namespace for your site (DO NOT CHANGE)
+    const namespace = 'maruf-portfolio-official-v1';
+    
+    // API Function to update counts
+    const updateCounter = async () => {
+      try {
+        // 1. Total Visits (Lifetime)
+        // This hits the 'total' key. If it doesn't exist, it creates it.
+        const totalRes = await fetch(`https://api.countapi.xyz/hit/${namespace}/total_visits`);
+        const totalData = await totalRes.json();
+        document.getElementById('totalVisits').innerText = totalData.value;
+
+        // 2. Today's Visits (Daily Reset Logic)
+        // We generate a unique key based on today's date in Bangladesh Time (e.g., visits_14_02_2026)
+        // So tomorrow, it generates a new key automatically starting from 0.
+        const date = new Date().toLocaleDateString('en-GB', { timeZone: 'Asia/Dhaka' }).replace(/\//g, '_');
+        const todayKey = `visits_${date}`;
+        
+        const todayRes = await fetch(`https://api.countapi.xyz/hit/${namespace}/${todayKey}`);
+        const todayData = await todayRes.json();
+        document.getElementById('todayVisits').innerText = todayData.value;
+        
+      } catch (error) {
+        console.error('Counter Error:', error);
+        // Fallback if API fails
+        document.getElementById('totalVisits').innerText = "—";
+        document.getElementById('todayVisits').innerText = "—";
+      }
+    };
+
+    // Run the counter when page loads
+    updateCounter();
+  })();
+</script>
+
 </body>
 </html>
