@@ -1,8 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MARUF HASAN — Web3 Community Manager</title>
+<meta name="description" content="Maruf Hasan — Web3 Community Manager & Community Builder. 170K+ members managed, 500+ tutorials, 5+ years in crypto.">
+<link rel="preconnect" href="https://fonts.googleapis.com ">
+<link rel="preconnect" href="https://fonts.gstatic.com " crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300 ;400;500;600;700;800;900&family=Montserrat:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800;900&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css ">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="preloader">
+  <div class="preloader-inner">
+    <div class="preloader-kanji">丸</div>
+    <div class="preloader-bar"><div class="preloader-fill"></div></div>
+    <div class="preloader-text">LOADING</div>
+  </div>
+</div>
+
+<canvas id="bgCanvas"></canvas>
+<div id="sakura-container"></div>
+<div class="grid-overlay"></div>
+
+<header id="mainHeader" class="site-header">
+  <div class="header-inner">
+    <a href="#hero" class="header-logo">
+      <span class="logo-mark">丸</span>
+      <span class="logo-text">MARUF<span class="logo-dot">.</span></span>
+    </a>
+    <nav class="header-nav" id="mainNav">
+      <a href="#hero" class="nav-link active" data-section="hero">Home</a>
+      <a href="#about" class="nav-link" data-section="about">About</a>
+      <a href="#skills" class="nav-link" data-section="skills">Skills</a>
+      <a href="#experience" class="nav-link" data-section="experience">Journey</a>
+      <a href="#contact" class="nav-link" data-section="contact">Hire Me</a>
+    </nav>
+    <div class="header-status">
+      <span class="status-dot"></span>
+      <span class="status-text">Open to Work</span>
+    </div>
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-nav-overlay" id="mobileNavOverlay">
+  <div class="mobile-nav-content">
+    <a href="#hero" class="mobile-nav-link" data-index="01">Home</a>
+    <a href="#about" class="mobile-nav-link" data-index="02">About</a>
+    <a href="#skills" class="mobile-nav-link" data-index="03">Skills</a>
+    <a href="#experience" class="mobile-nav-link" data-index="04">Journey</a>
+    <a href="#contact" class="mobile-nav-link" data-index="05">Hire Me</a>
+    <div class="mobile-nav-footer">
+      <div class="mobile-social-links">
+        <a href="https://x.com/maruf_ix " target="_blank" rel="noopener"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://t.me/maruff_ix " target="_blank" rel="noopener"><i class="fab fa-telegram"></i></a>
+        <a href="mailto:marufhasan8009@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="#" class="discord-link"><i class="fab fa-discord"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="hero" class="hero-section">
+  <div class="hero-container">
+    <div class="hero-left">
+      <div class="hero-tag fade-up">
+        <span class="tag-line"></span>
+        <span class="tag-text">Web3 Community Manager</span>
+      </div>
+      <h1 class="hero-name fade-up" data-delay="100">
+        <span class="name-line name-first">MARUF</span>
+        <span class="name-line name-last">HASAN<span class="name-accent">.</span></span>
+      </h1>
+      <p class="hero-tagline fade-up" data-delay="200">
+        I help crypto projects <strong>grow</strong> by building <strong>active communities</strong>, creating easy tutorials, and keeping members <strong>engaged</strong> every single day.
+      </p>
+      <div class="hero-stats fade-up" data-delay="300">
+        <div class="stat-item">
+          <span class="stat-number" data-count="170">0</span><span class="stat-suffix">K+</span>
+          <span class="stat-label">Members Managed</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number" data-count="500">0</span><span class="stat-suffix">+</span>
+          <span class="stat-label">Video Tutorials</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number" data-count="5">0</span><span class="stat-suffix">+</span>
+          <span class="stat-label">Years in Crypto</span>
+        </div>
+      </div>
+      <div class="hero-cta fade-up" data-delay="400">
+        <a href="#contact" class="btn-primary">
+          <span>Hire Me</span>
+          <i class="fas fa-arrow-right"></i>
+        </a>
+        <a href="#about" class="btn-secondary">
+          <span>Learn More</span>
+        </a>
+      </div>
+    </div>
+    <div class="hero-right fade-up" data-delay="200">
+      <div class="profile-frame">
+        <div class="frame-corner frame-tl"></div>
+        <div class="frame-corner frame-tr"></div>
+        <div class="frame-corner frame-bl"></div>
+        <div class="frame-corner frame-br"></div>
+        <div class="frame-label-top">ポートフォリオ</div>
+        <div class="frame-label-side">COMMUNITY BUILDER</div>
+        <div class="profile-img-wrapper" id="profileImgWrapper">
+          <img src="images/profile.webp" alt="Maruf Hasan — Web3 Community Manager" class="profile-img" id="profileImg" loading="eager">
+          <div class="img-overlay">
+            <span class="img-overlay-text">Click for Color</span>
+          </div>
+        </div>
+        <div class="frame-badge">
+          <span class="badge-dot"></span>
+          <span>Available Now</span>
+        </div>
+      </div>
+      <div class="hero-deco-circle"></div>
+      <div class="hero-deco-plus">+</div>
+      <div class="hero-deco-dots">
+        <span></span><span></span><span></span>
+        <span></span><span></span><span></span>
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-indicator fade-up" data-delay="600">
+    <div class="scroll-line"></div>
+    <span>Scroll Down</span>
+  </div>
+  <div class="hero-side-text">EST. 2018 — CRYPTO & WEB3</div>
+</section>
+
+<section id="about" class="about-section">
+  <div class="section-container">
+    <div class="section-header">
+      <div class="section-label fade-up">
+        <span class="label-num">01</span>
+        <span class="label-line"></span>
+        <span class="label-text">About Me</span>
+      </div>
+      <h2 class="section-title fade-up" data-delay="100">
+        <span class="title-line">Who</span>
+        <span class="title-line title-outline">I Am</span>
+      </h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-main fade-up" data-delay="150">
+        <div class="about-drop-cap">I</div>
+        <p class="about-text-lead">
+          'm <strong>Maruf Hasan</strong>, a Web3 Community Manager from Bangladesh. I've been in the crypto world for over <strong>5 years</strong> — trading, finding new projects, and building communities from scratch.
+        </p>
+        <p class="about-text">
+          In 2024–2025, I ran a Telegram channel and group with <strong>170K+ members</strong>. I shared airdrops, testnets, exchange events, and project updates. I also made <strong>500+ tutorial videos</strong> so everyone could easily follow along and join in.
+        </p>
+      </div>
+      <div class="about-sidebar fade-up" data-delay="250">
+        <div class="about-quote-block">
+          <div class="quote-mark">❝</div>
+          <p class="quote-text">I believe in making crypto simple. Whether it's a DeFi tool or a safety setup — I keep things clear and easy for everyone.</p>
+          <div class="quote-author">— Maruf Hasan</div>
+        </div>
+      </div>
+      <div class="about-bottom fade-up" data-delay="300">
+        <div class="about-card">
+          <div class="card-icon"><i class="fas fa-bullseye"></i></div>
+          <h3 class="card-title">My Goal</h3>
+          <p class="card-text">Make crypto easy to understand. I break down complex DeFi tools and blockchain concepts into simple steps anyone can follow.</p>
+        </div>
+        <div class="about-card">
+          <div class="card-icon"><i class="fas fa-rocket"></i></div>
+          <h3 class="card-title">How I Work</h3>
+          <p class="card-text">I don't just manage communities — I build them. From smart bots to daily content, I make sure every member feels welcome and stays active.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="about-deco-line"></div>
+  <div class="about-deco-kanji">信</div>
+</section>
+
+<section id="skills" class="skills-section">
+  <div class="section-container">
+    <div class="section-header">
+      <div class="section-label fade-up">
+        <span class="label-num">02</span>
+        <span class="label-line"></span>
+        <span class="label-text">My Skills</span>
+      </div>
+      <h2 class="section-title fade-up" data-delay="100">
+        <span class="title-line">What</span>
+        <span class="title-line title-outline">I Do</span>
+      </h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card fade-up" data-delay="100">
+        <div class="skill-card-num">01</div>
+        <div class="skill-card-icon"><i class="fab fa-telegram"></i></div>
+        <h3 class="skill-card-title">Telegram Management</h3>
+        <ul class="skill-card-list">
+          <li>Managed 170K+ members</li>
+          <li>Bot setup & automation</li>
+          <li>Anti-spam & security</li>
+          <li>24/7 group moderation</li>
+        </ul>
+      </div>
+      <div class="skill-card fade-up" data-delay="150">
+        <div class="skill-card-num">02</div>
+        <div class="skill-card-icon"><i class="fas fa-video"></i></div>
+        <h3 class="skill-card-title">Content Creation</h3>
+        <ul class="skill-card-list">
+          <li>500+ tutorial videos</li>
+          <li>Step-by-step guides</li>
+          <li>Airdrop walkthroughs</li>
+          <li>DeFi explainers</li>
+        </ul>
+      </div>
+      <div class="skill-card fade-up" data-delay="200">
+        <div class="skill-card-num">03</div>
+        <div class="skill-card-icon"><i class="fab fa-x-twitter"></i></div>
+        <h3 class="skill-card-title">Twitter / X</h3>
+        <ul class="skill-card-list">
+          <li>Thread writing</li>
+          <li>Engagement growth</li>
+          <li>Community interaction</li>
+          <li>Brand voice management</li>
+        </ul>
+      </div>
+      <div class="skill-card fade-up" data-delay="250">
+        <div class="skill-card-num">04</div>
+        <div class="skill-card-icon"><i class="fab fa-discord"></i></div>
+        <h3 class="skill-card-title">Discord</h3>
+        <ul class="skill-card-list">
+          <li>Server setup & design</li>
+          <li>Role & permission management</li>
+          <li>Ticket support systems</li>
+          <li>Community events</li>
+        </ul>
+      </div>
+      <div class="skill-card fade-up" data-delay="300">
+        <div class="skill-card-num">05</div>
+        <div class="skill-card-icon"><i class="fas fa-chart-line"></i></div>
+        <h3 class="skill-card-title">Growth & Campaigns</h3>
+        <ul class="skill-card-list">
+          <li>Zealy / Galxe campaigns</li>
+          <li>User growth strategies</li>
+          <li>Performance tracking</li>
+          <li>Reward programs</li>
+        </ul>
+      </div>
+      <div class="skill-card fade-up" data-delay="350">
+        <div class="skill-card-num">06</div>
+        <div class="skill-card-icon"><i class="fas fa-palette"></i></div>
+        <h3 class="skill-card-title">Design & Visuals</h3>
+        <ul class="skill-card-list">
+          <li>Social media graphics</li>
+          <li>Banner & poster design</li>
+          <li>Infographics</li>
+          <li>Brand identity</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="skills-deco-kanji">技</div>
+</section>
+
+<section id="experience" class="experience-section">
+  <div class="section-container">
+    <div class="section-header">
+      <div class="section-label fade-up">
+        <span class="label-num">03</span>
+        <span class="label-line"></span>
+        <span class="label-text">Experience</span>
+      </div>
+      <h2 class="section-title fade-up" data-delay="100">
+        <span class="title-line">My</span>
+        <span class="title-line title-outline">Journey</span>
+      </h2>
+    </div>
+    <p class="experience-intro fade-up" data-delay="150">From a curious crypto fan to managing one of the largest Telegram communities — here's my story.</p>
+    <div class="timeline">
+      <div class="timeline-item fade-up" data-delay="200">
+        <div class="timeline-marker">
+          <div class="marker-year">2024</div>
+          <div class="marker-dot"></div>
+          <div class="marker-line"></div>
+        </div>
+        <div class="timeline-content">
+          <div class="timeline-badge">Latest</div>
+          <h3 class="timeline-title">Community Manager</h3>
+          <div class="timeline-sub">Telegram Channel & Group — 2024 to 2025</div>
+          <p class="timeline-text">Built and managed a <strong>170K+ member</strong> community. Created <strong>500+ tutorial videos</strong> covering airdrops, testnets, exchange events, and DeFi guides. Kept the community safe, active, and growing every day.</p>
+          <div class="timeline-tags">
+            <span class="t-tag">Telegram</span>
+            <span class="t-tag">Airdrops</span>
+            <span class="t-tag">Tutorials</span>
+            <span class="t-tag">DeFi</span>
+          </div>
+        </div>
+      </div>
+      <div class="timeline-item fade-up" data-delay="250">
+        <div class="timeline-marker">
+          <div class="marker-year">2020</div>
+          <div class="marker-dot"></div>
+          <div class="marker-line"></div>
+        </div>
+        <div class="timeline-content">
+          <h3 class="timeline-title">Crypto Researcher & Trader</h3>
+          <div class="timeline-sub">Independent — 2020 to 2023</div>
+          <p class="timeline-text">Spent years actively trading crypto and researching new projects. Got into DeFi, NFTs, and testnets early. Learned the ins and outs of the blockchain world through real experience.</p>
+          <div class="timeline-tags">
+            <span class="t-tag">Trading</span>
+            <span class="t-tag">DeFi</span>
+            <span class="t-tag">NFTs</span>
+            <span class="t-tag">Research</span>
+          </div>
+        </div>
+      </div>
+      <div class="timeline-item fade-up" data-delay="300">
+        <div class="timeline-marker">
+          <div class="marker-year">2018</div>
+          <div class="marker-dot"></div>
+        </div>
+        <div class="timeline-content">
+          <h3 class="timeline-title">Crypto Enthusiast</h3>
+          <div class="timeline-sub">Self-Learning — 2018 to 2020</div>
+          <p class="timeline-text">Started exploring cryptocurrency and blockchain technology. Joined early airdrops and began understanding how this exciting new world works from the ground up.</p>
+          <div class="timeline-tags">
+            <span class="t-tag">Blockchain</span>
+            <span class="t-tag">Airdrops</span>
+            <span class="t-tag">Learning</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="education-block fade-up" data-delay="350">
+      <div class="edu-deco">学</div>
+      <div class="edu-content">
+        <div class="edu-label">Education</div>
+        <h3 class="edu-title">BBA Honours (Management)</h3>
+        <div class="edu-status">3rd Year Student</div>
+        <p class="edu-text">Studying management gives me a strong base for organizing teams, planning strategies, and leading communities the right way.</p>
+      </div>
+    </div>
+  </div>
+  <div class="experience-deco-kanji">歴</div>
+</section>
+
+<section id="contact" class="contact-section">
+  <div class="section-container">
+    <div class="section-header">
+      <div class="section-label fade-up">
+        <span class="label-num">04</span>
+        <span class="label-line"></span>
+        <span class="label-text">Get in Touch</span>
+      </div>
+      <h2 class="section-title fade-up" data-delay="100">
+        <span class="title-line">Let's</span>
+        <span class="title-line title-outline">Work Together</span>
+      </h2>
+    </div>
+    <p class="contact-intro fade-up" data-delay="150">Looking for someone to manage your Web3 community? I'd love to hear about your project. Let's talk and see how I can help you grow.</p>
+    <div class="contact-grid">
+      <div class="contact-info fade-up" data-delay="200">
+        <a href="https://x.com/maruf_ix " target="_blank" rel="noopener" class="contact-card">
+          <div class="contact-card-icon"><i class="fab fa-x-twitter"></i></div>
+          <div class="contact-card-body">
+            <div class="contact-card-label">Twitter / X</div>
+            <div class="contact-card-value">@maruf_ix</div>
+          </div>
+          <i class="fas fa-arrow-up-right-from-square contact-card-arrow"></i>
+        </a>
+        <a href="https://t.me/maruff_ix " target="_blank" rel="noopener" class="contact-card">
+          <div class="contact-card-icon"><i class="fab fa-telegram"></i></div>
+          <div class="contact-card-body">
+            <div class="contact-card-label">Telegram</div>
+            <div class="contact-card-value">@maruff_ix</div>
+          </div>
+          <i class="fas fa-arrow-up-right-from-square contact-card-arrow"></i>
+        </a>
+        <a href="mailto:marufhasan8009@gmail.com" class="contact-card">
+          <div class="contact-card-icon"><i class="fas fa-envelope"></i></div>
+          <div class="contact-card-body">
+            <div class="contact-card-label">Email</div>
+            <div class="contact-card-value">marufhasan8009@gmail.com</div>
+          </div>
+          <i class="fas fa-arrow-up-right-from-square contact-card-arrow"></i>
+        </a>
+        <div class="contact-card no-link">
+          <div class="contact-card-icon"><i class="fab fa-discord"></i></div>
+          <div class="contact-card-body">
+            <div class="contact-card-label">Discord</div>
+            <div class="contact-card-value">maruf_ix</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form-wrapper fade-up" data-delay="300">
+        <form class="contact-form" id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="firstName">First Name</label>
+              <input type="text" id="firstName" name="firstName" required placeholder="Your first name">
+            </div>
+            <div class="form-group">
+              <label for="lastName">Last Name</label>
+              <input type="text" id="lastName" name="lastName" required placeholder="Your last name">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required placeholder="you@example.com">
+          </div>
+          <div class="form-group">
+            <label for="projectUrl">Project URL <span class="optional">(Optional)</span></label>
+            <input type="url" id="projectUrl" name="projectUrl" placeholder="https://yourproject.com ">
+          </div>
+          <div class="form-group">
+            <label for="budget">Budget Range</label>
+            <select id="budget" name="budget" required>
+              <option value="" disabled selected>Select your budget</option>
+              <option value="under500">Under $500</option>
+              <option value="500-1000">$500 — $1,000</option>
+              <option value="1000-5000">$1,000 — $5,000</option>
+              <option value="5000+">$5,000+</option>
+              <option value="networking">Just Networking</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" required placeholder="Tell me about your project..."></textarea>
+          </div>
+          <button type="submit" class="btn-submit">
+            <span>Send Message</span>
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </form>
+        <div class="form-success" id="formSuccess">
+          <i class="fas fa-check-circle"></i>
+          <h3>Message Sent!</h3>
+          <p>Thank you for reaching out. I'll get back to you as soon as possible.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="contact-deco-kanji">繋</div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="footer-logo-mark">丸</span>
+        <span class="footer-name">MARUF HASAN</span>
+        <span class="footer-title">Web3 Community Manager</span>
+      </div>
+      <div class="footer-social">
+        <a href="https://x.com/maruf_ix " target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://t.me/maruff_ix " target="_blank" rel="noopener" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+        <a href="mailto:marufhasan8009@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        <a href="#" aria-label="Discord"><i class="fab fa-discord"></i></a>
+      </div>
+    </div>
+    <div class="footer-divider"></div>
+    <div class="footer-bottom">
+      <div class="footer-copy">&copy; 2025 Maruf Hasan. All rights reserved.</div>
+      
+      <div class="visitor-counter" id="visitorCounter" style="display: flex !important;">
+        <div class="vc-item">
+          <span class="vc-label">Today</span>
+          <span class="vc-number" id="todayVisits">—</span>
+        </div>
+        <div class="vc-divider"></div>
+        <div class="vc-item">
+          <span class="vc-label">Total</span>
+          <span class="vc-number" id="totalVisits">—</span>
+        </div>
+        <div class="vc-live-dot"></div>
+      </div>
+
+    </div>
+  </div>
+</footer>
+
+<button class="back-to-top" id="backToTop" aria-label="Back to top">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<script src="js/main.js"></script>
+
+<!--
+══════════════════════════════════════════════════════════════════════════════
+ VISITOR COUNTER v8.0 — ULTIMATE BULLETPROOF EDITION
+
+ Strategy:
+   Firebase (primary data store) + CounterAPI (backup display) + localStorage
+   Both APIs increment simultaneously. First response wins the display.
+   If your ISP blocks Firebase → CounterAPI shows instead.
+   If both fail → localStorage fallback (per-device, always works).
+
+ Features:
+   ✅ Completely independent of main.js — won't break if main.js crashes
+   ✅ Wrapped in setTimeout + try-catch — DOM always ready, errors caught
+   ✅ RACE pattern — fastest API wins display
+   ✅ Both APIs always increment — no data loss
+   ✅ Today resets at midnight Dhaka time (UTC+6)
+   ✅ Total accumulates forever
+   ✅ Every page load/refresh = +1
+   ✅ 10s timeout per API — won't hang forever
+   ✅ 15s failsafe — localStorage kicks in if all APIs fail
+   ✅ Cache shows instantly on load (no flash of "—")
+   ✅ Works on GitHub Pages, Netlify, Vercel, any static host
+   ✅ Works on all browsers and devices
+══════════════════════════════════════════════════════════════════════════════
+-->
 <script>
 setTimeout(function(){try{(function(){'use strict';
 
 /* ── Config ── */
-var FB='https://maruf-42ebb-default-rtdb.asia-southeast1.firebasedatabase.app';
+var FB='https://maruf-42ebb-default-rtdb.asia-southeast1.firebasedatabase.app ';
 var NS='marufhasanportfolio2025';
 var CK='mhvc8';
 
@@ -36,26 +560,18 @@ function ft(u,o,m){m=m||10000;return new Promise(function(ok,no){
 var done=false;
 function show(t,y){if(done)return;done=true;if(t>0)aE.textContent=t;if(y>0)tE.textContent=y;sc(t,y);}
 
-/* ══ Firebase: ATOMIC increment + read ══ */
-function fbI(p){
-  var u=FB+p+'.json';
-  // Use Firebase server value for atomic increment (handles concurrent visits correctly)
-  return ft(u,{
-    method:'PUT',
-    headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({'.sv':{'increment':1}})
-  },10000)
-  .then(function(r){if(!r.ok)throw new Error(r.status);
-  // Read back the new total
-  return ft(u);})
-  .then(function(r){if(!r.ok)throw new Error(r.status);return r.json();});
-}
+/* ══ Firebase: read → increment → write ══ */
+function fbI(p){var u=FB+p+'.json';
+  return ft(u).then(function(r){if(!r.ok)throw new Error(r.status);return r.json();})
+  .then(function(v){var n=(typeof v==='number'?v:0)+1;
+  return ft(u,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(n)})
+  .then(function(r){if(!r.ok)throw new Error(r.status);return r.json();});});}
 
 function goFB(){return Promise.all([fbI('/visitors/total'),fbI('/visitors/daily/'+TK)])
   .then(function(r){show(r[0],r[1]);});}
 
 /* ══ CounterAPI: simple increment endpoint ══ */
-function goCA(){var b='https://api.counterapi.dev/v1';
+function goCA(){var b='https://api.counterapi.dev/v1 ';
   return Promise.all([
     ft(b+'/'+NS+'/totalvisits/up').then(function(r){if(!r.ok)throw new Error(r.status);return r.json();}).then(function(d){return d.count;}),
     ft(b+'/'+NS+'/today'+TK+'/up').then(function(r){if(!r.ok)throw new Error(r.status);return r.json();}).then(function(d){return d.count;})
@@ -75,3 +591,6 @@ setTimeout(function(){if(!done)goLS();},15000);
 
 })();}catch(e){}},100);
 </script>
+
+</body>
+</html>
