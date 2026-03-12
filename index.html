@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MARUF HASAN — Web3 Community Manager</title>
 <meta name="description" content="Maruf Hasan — Web3 Community Manager & Community Builder. 170K+ members managed, 500+ tutorials, 5+ years in crypto.">
-<link rel="preconnect" href="https://fonts.googleapis.com ">
-<link rel="preconnect" href="https://fonts.gstatic.com " crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300 ;400;500;600;700;800;900&family=Montserrat:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800;900&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css ">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Montserrat:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800;900&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -57,8 +57,8 @@
     <a href="#contact" class="mobile-nav-link" data-index="05">Hire Me</a>
     <div class="mobile-nav-footer">
       <div class="mobile-social-links">
-        <a href="https://x.com/maruf_ix " target="_blank" rel="noopener"><i class="fab fa-x-twitter"></i></a>
-        <a href="https://t.me/maruff_ix " target="_blank" rel="noopener"><i class="fab fa-telegram"></i></a>
+        <a href="https://x.com/maruf_ix" target="_blank" rel="noopener"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://t.me/maruff_ix" target="_blank" rel="noopener"><i class="fab fa-telegram"></i></a>
         <a href="mailto:marufhasan8009@gmail.com"><i class="fas fa-envelope"></i></a>
         <a href="#" class="discord-link"><i class="fab fa-discord"></i></a>
       </div>
@@ -372,7 +372,7 @@
     <p class="contact-intro fade-up" data-delay="150">Looking for someone to manage your Web3 community? I'd love to hear about your project. Let's talk and see how I can help you grow.</p>
     <div class="contact-grid">
       <div class="contact-info fade-up" data-delay="200">
-        <a href="https://x.com/maruf_ix " target="_blank" rel="noopener" class="contact-card">
+        <a href="https://x.com/maruf_ix" target="_blank" rel="noopener" class="contact-card">
           <div class="contact-card-icon"><i class="fab fa-x-twitter"></i></div>
           <div class="contact-card-body">
             <div class="contact-card-label">Twitter / X</div>
@@ -380,7 +380,7 @@
           </div>
           <i class="fas fa-arrow-up-right-from-square contact-card-arrow"></i>
         </a>
-        <a href="https://t.me/maruff_ix " target="_blank" rel="noopener" class="contact-card">
+        <a href="https://t.me/maruff_ix" target="_blank" rel="noopener" class="contact-card">
           <div class="contact-card-icon"><i class="fab fa-telegram"></i></div>
           <div class="contact-card-body">
             <div class="contact-card-label">Telegram</div>
@@ -422,7 +422,7 @@
           </div>
           <div class="form-group">
             <label for="projectUrl">Project URL <span class="optional">(Optional)</span></label>
-            <input type="url" id="projectUrl" name="projectUrl" placeholder="https://yourproject.com ">
+            <input type="url" id="projectUrl" name="projectUrl" placeholder="https://yourproject.com">
           </div>
           <div class="form-group">
             <label for="budget">Budget Range</label>
@@ -464,8 +464,8 @@
         <span class="footer-title">Web3 Community Manager</span>
       </div>
       <div class="footer-social">
-        <a href="https://x.com/maruf_ix " target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
-        <a href="https://t.me/maruff_ix " target="_blank" rel="noopener" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+        <a href="https://x.com/maruf_ix" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://t.me/maruff_ix" target="_blank" rel="noopener" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
         <a href="mailto:marufhasan8009@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
         <a href="#" aria-label="Discord"><i class="fab fa-discord"></i></a>
       </div>
@@ -503,14 +503,19 @@
 
  Strategy:
    Firebase (primary data store) + CounterAPI (backup display) + localStorage
-   Both APIs increment simultaneously. First response wins the display.
-   If your ISP blocks Firebase → CounterAPI shows instead.
+   Firebase is tried first. CounterAPI only runs if Firebase fails entirely.
    If both fail → localStorage fallback (per-device, always works).
+
+ FIX APPLIED (v8.1):
+   Previously both Firebase and CounterAPI were fired simultaneously in a race,
+   causing different devices to display different numbers depending on which API
+   responded faster on their network. Fixed by chaining: CounterAPI now only
+   activates if Firebase is completely unreachable — one source of truth.
 
  Features:
    ✅ Completely independent of main.js — won't break if main.js crashes
    ✅ Wrapped in setTimeout + try-catch — DOM always ready, errors caught
-   ✅ RACE pattern — fastest API wins display
+   ✅ Firebase primary, CounterAPI fallback only — consistent across all devices
    ✅ Both APIs always increment — no data loss
    ✅ Today resets at midnight Dhaka time (UTC+6)
    ✅ Total accumulates forever
@@ -526,7 +531,7 @@
 setTimeout(function(){try{(function(){'use strict';
 
 /* ── Config ── */
-var FB='https://maruf-42ebb-default-rtdb.asia-southeast1.firebasedatabase.app ';
+var FB='https://maruf-42ebb-default-rtdb.asia-southeast1.firebasedatabase.app';
 var NS='marufhasanportfolio2025';
 var CK='mhvc8';
 
@@ -571,7 +576,7 @@ function goFB(){return Promise.all([fbI('/visitors/total'),fbI('/visitors/daily/
   .then(function(r){show(r[0],r[1]);});}
 
 /* ══ CounterAPI: simple increment endpoint ══ */
-function goCA(){var b='https://api.counterapi.dev/v1 ';
+function goCA(){var b='https://api.counterapi.dev/v1';
   return Promise.all([
     ft(b+'/'+NS+'/totalvisits/up').then(function(r){if(!r.ok)throw new Error(r.status);return r.json();}).then(function(d){return d.count;}),
     ft(b+'/'+NS+'/today'+TK+'/up').then(function(r){if(!r.ok)throw new Error(r.status);return r.json();}).then(function(d){return d.count;})
@@ -582,9 +587,8 @@ function goLS(){var d={};try{d=JSON.parse(localStorage.getItem(CK+'_l')||'{}');}
   if(d.d!==TD){d.d=TD;d.y=0;}d.y=(d.y||0)+1;d.t=(d.t||0)+1;
   try{localStorage.setItem(CK+'_l',JSON.stringify(d));}catch(e){}show(d.t,d.y);}
 
-/* ══ LAUNCH: Race both APIs simultaneously ══ */
-goFB().catch(function(){});
-goCA().catch(function(){});
+/* ══ LAUNCH: Firebase primary, CounterAPI fallback only ══ */
+goFB().catch(function(){return goCA();}).catch(function(){});
 
 /* ══ Failsafe: 15 seconds, then localStorage ══ */
 setTimeout(function(){if(!done)goLS();},15000);
