@@ -444,4 +444,153 @@
             <i class="fas fa-paper-plane"></i>
           </button>
         </form>
-        <div class
+        <div class="form-success" id="formSuccess">
+          <i class="fas fa-check-circle"></i>
+          <h3>Message Sent!</h3>
+          <p>Thank you for reaching out. I'll get back to you as soon as possible.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="contact-deco-kanji">繋</div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="footer-logo-mark">丸</span>
+        <span class="footer-name">MARUF HASAN</span>
+        <span class="footer-title">Web3 Community Manager</span>
+      </div>
+      <div class="footer-social">
+        <a href="https://x.com/maruf_ix " target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://t.me/maruff_ix " target="_blank" rel="noopener" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+        <a href="mailto:marufhasan8009@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        <a href="#" aria-label="Discord"><i class="fab fa-discord"></i></a>
+      </div>
+    </div>
+    <div class="footer-divider"></div>
+    <div class="footer-bottom">
+      <div class="footer-copy">&copy; 2025 Maruf Hasan. All rights reserved.</div>
+      
+      <div class="visitor-counter" id="visitorCounter" style="display: flex !important;">
+        <div class="vc-item">
+          <span class="vc-label">Today</span>
+          <span class="vc-number" id="todayVisits">—</span>
+        </div>
+        <div class="vc-divider"></div>
+        <div class="vc-item">
+          <span class="vc-label">Total</span>
+          <span class="vc-number" id="totalVisits">—</span>
+        </div>
+        <div class="vc-live-dot"></div>
+      </div>
+
+    </div>
+  </div>
+</footer>
+
+<button class="back-to-top" id="backToTop" aria-label="Back to top">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<script src="js/main.js"></script>
+
+<!--
+══════════════════════════════════════════════════════════════════════════════
+ VISITOR COUNTER v8.0 — ULTIMATE BULLETPROOF EDITION
+
+ Strategy:
+   Firebase (primary data store) + CounterAPI (backup display) + localStorage
+   Both APIs increment simultaneously. First response wins the display.
+   If your ISP blocks Firebase → CounterAPI shows instead.
+   If both fail → localStorage fallback (per-device, always works).
+
+ Features:
+   ✅ Completely independent of main.js — won't break if main.js crashes
+   ✅ Wrapped in setTimeout + try-catch — DOM always ready, errors caught
+   ✅ RACE pattern — fastest API wins display
+   ✅ Both APIs always increment — no data loss
+   ✅ Today resets at midnight Dhaka time (UTC+6)
+   ✅ Total accumulates forever
+   ✅ Every page load/refresh = +1
+   ✅ 10s timeout per API — won't hang forever
+   ✅ 15s failsafe — localStorage kicks in if all APIs fail
+   ✅ Cache shows instantly on load (no flash of "—")
+   ✅ Works on GitHub Pages, Netlify, Vercel, any static host
+   ✅ Works on all browsers and devices
+══════════════════════════════════════════════════════════════════════════════
+-->
+<script>
+setTimeout(function(){try{(function(){'use strict';
+
+/* ── Config ── */
+var FB='https://maruf-42ebb-default-rtdb.asia-southeast1.firebasedatabase.app ';
+var NS='marufhasanportfolio2025';
+var CK='mhvc8';
+
+/* ── DOM elements ── */
+var tE=document.getElementById('todayVisits');
+var aE=document.getElementById('totalVisits');
+if(!tE||!aE)return;
+
+/* ── Dhaka date (UTC+6) ── */
+function gd(){
+  try{return new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Dhaka',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());}
+  catch(e){var d=new Date(Date.now()+21600000);return d.toISOString().slice(0,10);}
+}
+var TD=gd(),TK=TD.replace(/-/g,'');
+
+/* ── Show cache INSTANTLY ── */
+var cc={};try{cc=JSON.parse(localStorage.getItem(CK)||'{}');}catch(e){cc={};}
+if(cc.t>0)aE.textContent=cc.t;
+if(cc.d===TD&&cc.y>0)tE.textContent=cc.y;else tE.textContent='0';
+
+function sc(t,y){try{localStorage.setItem(CK,JSON.stringify({t:t,y:y,d:TD}));}catch(e){}}
+
+/* ── Fetch with timeout ── */
+function ft(u,o,m){m=m||10000;return new Promise(function(ok,no){
+  var dn=false,tm=setTimeout(function(){if(!dn){dn=true;no(new Error('timeout'));}},m);
+  fetch(u,o||{}).then(function(r){if(!dn){dn=true;clearTimeout(tm);ok(r);}})
+  .catch(function(e){if(!dn){dn=true;clearTimeout(tm);no(e);}});
+});}
+
+/* ── Display once ── */
+var done=false;
+function show(t,y){if(done)return;done=true;if(t>0)aE.textContent=t;if(y>0)tE.textContent=y;sc(t,y);}
+
+/* ══ Firebase: read → increment → write ══ */
+function fbI(p){var u=FB+p+'.json';
+  return ft(u).then(function(r){if(!r.ok)throw new Error(r.status);return r.json();})
+  .then(function(v){var n=(typeof v==='number'?v:0)+1;
+  return ft(u,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(n)})
+  .then(function(r){if(!r.ok)throw new Error(r.status);return r.json();});});}
+
+function goFB(){return Promise.all([fbI('/visitors/total'),fbI('/visitors/daily/'+TK)])
+  .then(function(r){show(r[0],r[1]);});}
+
+/* ══ CounterAPI: simple increment endpoint ══ */
+function goCA(){var b='https://api.counterapi.dev/v1 ';
+  return Promise.all([
+    ft(b+'/'+NS+'/totalvisits/up').then(function(r){if(!r.ok)throw new Error(r.status);return r.json();}).then(function(d){return d.count;}),
+    ft(b+'/'+NS+'/today'+TK+'/up').then(function(r){if(!r.ok)throw new Error(r.status);return r.json();}).then(function(d){return d.count;})
+  ]).then(function(r){show(r[0],r[1]);});}
+
+/* ══ localStorage fallback ══ */
+function goLS(){var d={};try{d=JSON.parse(localStorage.getItem(CK+'_l')||'{}');}catch(e){d={};}
+  if(d.d!==TD){d.d=TD;d.y=0;}d.y=(d.y||0)+1;d.t=(d.t||0)+1;
+  try{localStorage.setItem(CK+'_l',JSON.stringify(d));}catch(e){}show(d.t,d.y);}
+
+/* ══ LAUNCH: Race both APIs simultaneously ══ */
+goFB().catch(function(){});
+goCA().catch(function(){});
+
+/* ══ Failsafe: 15 seconds, then localStorage ══ */
+setTimeout(function(){if(!done)goLS();},15000);
+
+})();}catch(e){}},100);
+</script>
+
+</body>
+</html>
