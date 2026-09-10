@@ -15,7 +15,7 @@
 <meta name="twitter:title" content="MARUF HASAN — Developer &amp; Web3 Community Builder">
 <meta name="twitter:description" content="Developer + Web3 community builder. Open for work, X promotions and collaborations.">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
-<script>(function(){try{var m=localStorage.getItem('mh-mode');if(m!=='dev'&&m!=='web3')m='dev';document.documentElement.setAttribute('data-mode',m);}catch(e){document.documentElement.setAttribute('data-mode','dev');}})();</script>
+<script>(function(){var m='dev';try{var q=new URLSearchParams(location.search).get('m');var p=location.pathname;if(q==='dev'||q==='web3')m=q;else if(/^\/web3\/?$/.test(p))m='web3';else if(/^\/dev\/?$/.test(p))m='dev';else{var s=localStorage.getItem('mh-mode');if(s==='dev'||s==='web3')m=s;}localStorage.setItem('mh-mode',m);}catch(e){}document.documentElement.setAttribute('data-mode',m);try{if(new URLSearchParams(location.search).get('m'))history.replaceState(null,'','/'+m);}catch(e2){}})();</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Shippori+Mincho:wght@700;800&family=Space+Grotesk:wght@400;500;600;700&family=Zen+Kaku+Gothic+New:wght@500;700;900&display=swap" rel="stylesheet">
@@ -51,7 +51,7 @@
 <a class="promobar wrap-link" href="#offer">
   <span class="pb-dot" aria-hidden="true"></span>
   <span data-for="dev"><strong>i do paid x promotions</strong> — sponsored posts · tool reviews · launches — see how &#8594;</span>
-  <span data-for="web3"><strong>仕事募集中 — open for work</strong> — community growth · content · collabs — see how &#8594;</span>
+  <span data-for="web3"><strong>open for work</strong> — community growth · content · collabs — see how &#8594;</span>
 </a>
 
 <div class="mnav" id="mnav" hidden>
@@ -97,9 +97,9 @@ maruf_hasan — builder</pre></div>
         <span><b>01</b>javascript</span><span><b>02</b>web apps</span><span><b>03</b>pwa</span><span><b>04</b>apis</span><span><b>05</b>ai workflows</span>
       </div>
       <div class="slips rv" data-for="web3">
-        <div class="slip"><span class="slip-n"><span data-count="170">0</span>K+</span><span class="slip-l">members managed</span><span class="ghost" lang="ja" aria-hidden="true">人</span></div>
-        <div class="slip"><span class="slip-n"><span data-count="500">0</span>+</span><span class="slip-l">tutorials published</span><span class="ghost" lang="ja" aria-hidden="true">書</span></div>
-        <div class="slip"><span class="slip-n"><span data-count="5">0</span>+</span><span class="slip-l">years in crypto</span><span class="ghost" lang="ja" aria-hidden="true">年</span></div>
+        <div class="slip"><span class="slip-n"><span data-count="170">0</span>K+</span><span class="slip-l">members managed</span></div>
+        <div class="slip"><span class="slip-n"><span data-count="500">0</span>+</span><span class="slip-l">tutorials published</span></div>
+        <div class="slip"><span class="slip-n"><span data-count="5">0</span>+</span><span class="slip-l">years in crypto</span></div>
       </div>
 
       <div class="cta rv">
@@ -115,7 +115,7 @@ maruf_hasan — builder</pre></div>
         <span class="cn bl" aria-hidden="true"></span><span class="cn br" aria-hidden="true"></span>
         <img src="images/profile.webp" alt="Portrait of Maruf Hasan" width="640" height="640" fetchpriority="high">
         <figcaption class="frame-tag" data-for="dev">available now</figcaption>
-        <figcaption class="frame-tag" data-for="web3" lang="ja">受付中</figcaption>
+        <figcaption class="frame-tag" data-for="web3">accepting work</figcaption>
       </figure>
       <dl class="spec">
         <div><dt>focus</dt><dd data-for="dev">websites · web apps · automation</dd><dd data-for="web3">community growth · content</dd></div>
@@ -123,7 +123,7 @@ maruf_hasan — builder</pre></div>
         <div><dt>response</dt><dd>within 24 hours</dd></div>
       </dl>
     </div>
-    <span class="hero-vtext" data-for="web3" lang="ja" aria-hidden="true">ウェブスリー・築く</span>
+    <span class="hero-vtext" data-for="web3" aria-hidden="true">built on trust</span>
   </section>
 
   <div class="seigaiha" data-for="web3" aria-hidden="true"></div>
@@ -133,11 +133,10 @@ maruf_hasan — builder</pre></div>
 
   <!-- ============ 01 ABOUT ============ -->
   <section class="sec wrap" id="about">
-    <span class="ghost-sec" data-for="web3" lang="ja" aria-hidden="true">紹</span>
+    <span class="ghost-word" data-for="web3" aria-hidden="true">profile</span>
     <p class="s-label rv"><span>01</span> — about</p>
     <h2 class="s-t rv" data-for="dev">developer, <span class="acc">not a dashboard.</span></h2>
-    <h2 class="s-t w3-t rv" data-for="web3">信じる、築く、続ける。</h2>
-    <p class="s-sub rv" data-for="web3">belief, building, continuity — the whole method.</p>
+    <h2 class="s-t w3-t rv" data-for="web3">Believe. Build. Continue.</h2>
     <div class="about-grid">
       <article class="rv" data-for="dev">
         <p class="about-big">I'm Maruf — I build for the web. Websites, tools and apps: planned properly, coded cleanly, tested on real phones before anything goes live.</p>
@@ -149,8 +148,7 @@ maruf_hasan — builder</pre></div>
       </article>
       <aside class="quote rv">
         <p class="quote-t" data-for="dev">"Taste is a feature. I ship work I'd sign my name on."</p>
-        <p class="quote-t w3-quote" data-for="web3" lang="ja">「難しさを、やさしさに。」</p>
-        <p class="quote-s" data-for="web3">"Turn difficulty into kindness."</p>
+        <p class="quote-t w3-quote" data-for="web3">"Turn difficulty into kindness."</p>
         <p class="quote-a">— maruf hasan</p>
       </aside>
     </div>
@@ -158,7 +156,7 @@ maruf_hasan — builder</pre></div>
 
   <!-- ============ 02 STACK ============ -->
   <section class="sec wrap" id="stack">
-    <span class="ghost-sec" data-for="web3" lang="ja" aria-hidden="true">技</span>
+    <span class="ghost-word" data-for="web3" aria-hidden="true">craft</span>
     <p class="s-label rv"><span>02</span> — arsenal</p>
     <h2 class="s-t rv">what i <span class="acc">work with.</span></h2>
     <article class="panel rv" data-for="dev">
@@ -169,7 +167,7 @@ maruf_hasan — builder</pre></div>
       <p class="note">currently deep in: ai agent workflows, model routing, edge compute.</p>
     </article>
     <article class="panel w3-panel rv" data-for="web3">
-      <p class="card-k" lang="ja">道具 — tools of the trade</p>
+      <p class="card-k">tools of the trade</p>
       <div class="tags w3-tags">
         <span>telegram ops at scale</span><span>x threads + growth</span><span>discord servers</span><span>video tutorials</span><span>defi / testnet guides</span><span>zealy / galxe quests</span><span>anti-spam + safety</span><span>content calendar</span>
       </div>
@@ -179,10 +177,10 @@ maruf_hasan — builder</pre></div>
 
   <!-- ============ 03 SERVICES ============ -->
   <section class="sec wrap" id="services">
-    <span class="ghost-sec" data-for="web3" lang="ja" aria-hidden="true">務</span>
+    <span class="ghost-word" data-for="web3" aria-hidden="true">duty</span>
     <p class="s-label rv"><span>03</span> — services</p>
     <h2 class="s-t rv" data-for="dev">what you <span class="acc">can hire.</span></h2>
-    <h2 class="s-t w3-t rv" data-for="web3" lang="ja">お手伝い — omakase service</h2>
+    <h2 class="s-t w3-t rv" data-for="web3">At your service.</h2>
     <ol class="rows rv" data-for="dev">
       <li><span class="r-n">01</span><div><h3>Custom websites</h3><p>Landing pages to multi-page sites. Fast, responsive, search-friendly.</p></div><span class="r-t">design + build</span></li>
       <li><span class="r-n">02</span><div><h3>Web apps &amp; tools</h3><p>Calculators, downloaders, dashboards — functional front-ends that work.</p></div><span class="r-t">front-end</span></li>
@@ -190,16 +188,16 @@ maruf_hasan — builder</pre></div>
       <li><span class="r-n">04</span><div><h3>AI workflow setups</h3><p>Agent CLIs, model routing and automation for individuals and small teams.</p></div><span class="r-t">ai ops</span></li>
     </ol>
     <ol class="rows w3-rows rv" data-for="web3">
-      <li><span class="r-n">01</span><div><h3>Community management <span class="r-jp" lang="ja">運営</span></h3><p>Daily ops, moderation, bots, safety — communities that stay active.</p></div><span class="r-t">telegram / discord</span></li>
-      <li><span class="r-n">02</span><div><h3>Content engine <span class="r-jp" lang="ja">発信</span></h3><p>Tutorials, threads and guides your members actually finish reading.</p></div><span class="r-t">content</span></li>
-      <li><span class="r-n">03</span><div><h3>X growth <span class="r-jp" lang="ja">拡散</span></h3><p>Threads, launches and consistent posting that compounds followers.</p></div><span class="r-t">distribution</span></li>
-      <li><span class="r-n">04</span><div><h3>Campaign ops <span class="r-jp" lang="ja">企画</span></h3><p>Quests, Zealy / Galxe programs and reward flows, run end to end.</p></div><span class="r-t">campaigns</span></li>
+      <li><span class="r-n">01</span><div><h3>Community management <span class="r-jp">operate</span></h3><p>Daily ops, moderation, bots, safety — communities that stay active.</p></div><span class="r-t">telegram / discord</span></li>
+      <li><span class="r-n">02</span><div><h3>Content engine <span class="r-jp">dispatch</span></h3><p>Tutorials, threads and guides your members actually finish reading.</p></div><span class="r-t">content</span></li>
+      <li><span class="r-n">03</span><div><h3>X growth <span class="r-jp">spread</span></h3><p>Threads, launches and consistent posting that compounds followers.</p></div><span class="r-t">distribution</span></li>
+      <li><span class="r-n">04</span><div><h3>Campaign ops <span class="r-jp">plan</span></h3><p>Quests, Zealy / Galxe programs and reward flows, run end to end.</p></div><span class="r-t">campaigns</span></li>
     </ol>
   </section>
 
   <!-- ============ 04 OFFER ============ -->
   <section class="sec wrap" id="offer">
-    <span class="ghost-sec" data-for="web3" lang="ja" aria-hidden="true">約</span>
+    <span class="ghost-word" data-for="web3" aria-hidden="true">pledge</span>
     <p class="s-label rv"><span>04</span> — work with me</p>
     <div data-for="dev">
       <h2 class="s-t rv">reach developers<br><span class="acc">through my x.</span></h2>
@@ -229,11 +227,11 @@ maruf_hasan — builder</pre></div>
       </div>
     </div>
     <div data-for="web3">
-      <h2 class="s-t w3-t rv" lang="ja">育てる — we grow it together</h2>
+      <h2 class="s-t w3-t rv">We grow it together.</h2>
       <p class="lede2 rv">One person to run the whole thing — strategy, daily content, moderation and campaigns. Done at 170K scale; ready for yours.</p>
       <div class="cols2">
         <article class="panel w3-panel rv">
-          <p class="card-k" lang="ja">お品書き — the offering</p>
+          <p class="card-k">the offering</p>
           <ol class="svc">
             <li><strong>full management</strong><span>daily ops, mods, bots, safety</span></li>
             <li><strong>content system</strong><span>calendar, tutorials, announcements</span></li>
@@ -242,7 +240,7 @@ maruf_hasan — builder</pre></div>
           </ol>
         </article>
         <article class="panel w3-panel rv">
-          <p class="card-k" lang="ja">流れ — how it flows</p>
+          <p class="card-k">how it flows</p>
           <ol class="svc">
             <li><strong>01 — talk</strong><span>project, goals, current state</span></li>
             <li><strong>02 — plan</strong><span>30-day roadmap + setup week</span></li>
@@ -259,7 +257,7 @@ maruf_hasan — builder</pre></div>
 
   <!-- ============ 05 JOURNEY ============ -->
   <section class="sec wrap" id="journey">
-    <span class="ghost-sec" data-for="web3" lang="ja" aria-hidden="true">歴</span>
+    <span class="ghost-word" data-for="web3" aria-hidden="true">roots</span>
     <p class="s-label rv"><span>05</span> — journey</p>
     <h2 class="s-t rv">the log <span class="acc">so far.</span></h2>
     <ol class="tl rv" data-for="dev">
@@ -267,16 +265,16 @@ maruf_hasan — builder</pre></div>
       <li><span class="yr">2025</span><div><h3>Building with AI, daily</h3><p>Agent workflows, model routing and automation — and thousands of posts teaching devs the same.</p></div></li>
     </ol>
     <ol class="tl w3-tl rv" data-for="web3">
-      <li><span class="yr">2024</span><div><h3>170K community manager <span class="r-jp" lang="ja">運営</span></h3><p>Ran channel + group and published 500+ tutorials through 2025.</p></div></li>
-      <li><span class="yr">2020</span><div><h3>Trader &amp; researcher <span class="r-jp" lang="ja">研究</span></h3><p>DeFi, NFTs, testnets — learned markets with real skin in the game.</p></div></li>
-      <li><span class="yr">2018</span><div><h3>First wallet <span class="r-jp" lang="ja">始</span></h3><p>Fell down the rabbit hole. Learned to build inside it.</p></div></li>
+      <li><span class="yr">2024</span><div><h3>170K community manager <span class="r-jp">operate</span></h3><p>Ran channel + group and published 500+ tutorials through 2025.</p></div></li>
+      <li><span class="yr">2020</span><div><h3>Trader &amp; researcher <span class="r-jp">study</span></h3><p>DeFi, NFTs, testnets — learned markets with real skin in the game.</p></div></li>
+      <li><span class="yr">2018</span><div><h3>First wallet <span class="r-jp">begin</span></h3><p>Fell down the rabbit hole. Learned to build inside it.</p></div></li>
     </ol>
     <div class="edu rv"><span class="edu-k">education</span><div><strong>BBA Honours, Management</strong><span> — 3rd year. Planning, teams, process.</span></div></div>
   </section>
 
   <!-- ============ 06 CONTACT ============ -->
   <section class="sec wrap" id="contact">
-    <span class="ghost-sec" data-for="web3" lang="ja" aria-hidden="true">繋</span>
+    <span class="ghost-word" data-for="web3" aria-hidden="true">bond</span>
     <p class="s-label rv"><span>06</span> — contact</p>
     <h2 class="s-t rv">say <span class="acc">hello.</span></h2>
     <p class="lede2 rv">Write here or message directly — reply within 24 hours. For work: scope + timeline. For promos: product + goal.</p>

@@ -21,7 +21,39 @@
   };
   var MODE_NAMES = { dev: 'developer', web3: 'web3' };
 
+  /* form topics follow the mode: dev never offers web3 community
+     and web3 never offers dev work */
+  var TOPICS = {
+    dev: [['work', 'dev work'], ['promo', 'x promotion / collab'], ['other', 'something else']],
+    web3: [['promo', 'x promotion / collab'], ['web3', 'web3 community'], ['other', 'something else']]
+  };
+  function applyTopics(mode) {
+    var sel = $('#fTopic');
+    if (!sel) return;
+    var cur = sel.value;
+    sel.innerHTML = '';
+    TOPICS[mode].forEach(function (t) {
+      var o = document.createElement('option');
+      o.value = t[0];
+      o.textContent = t[1];
+      sel.appendChild(o);
+    });
+    var ok = TOPICS[mode].some(function (t) { return t[0] === cur; });
+    sel.value = ok ? cur : TOPICS[mode][0][0];
+  }
+
+  function modeFromUrl() {
+    try {
+      var q = new URLSearchParams(location.search).get('m');
+      if (q === 'dev' || q === 'web3') return q;
+      if (/^\/web3\/?$/.test(location.pathname)) return 'web3';
+      if (/^\/dev\/?$/.test(location.pathname)) return 'dev';
+    } catch (e) {}
+    return null;
+  }
   function currentMode() {
+    var u = modeFromUrl();
+    if (u) return u;
     try {
       var m = localStorage.getItem('mh-mode');
       return (m === 'dev' || m === 'web3') ? m : 'dev';
@@ -39,11 +71,13 @@
     if (tt) tt.textContent = 'maruf@web: ~/whoami';
     var name = $('#modeName');
     if (name) name.textContent = MODE_NAMES[mode];
+    applyTopics(mode);
   }
 
   function setMode(mode, instant) {
     if (mode !== 'dev' && mode !== 'web3') mode = 'dev';
     try { localStorage.setItem('mh-mode', mode); } catch (e) {}
+    try { history.replaceState(null, '', '/' + mode); } catch (e2) {}
     closeMenu();
     if (instant || reduceMotion || !main) { paintMode(mode); return; }
     main.classList.add('swap');
