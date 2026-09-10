@@ -15,7 +15,7 @@
 <meta name="twitter:title" content="MARUF HASAN — Developer &amp; Web3 Community Builder">
 <meta name="twitter:description" content="Developer + Web3 community builder. Open for work, X promotions and collaborations.">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
-<script>(function(){var m='dev';try{var q=new URLSearchParams(location.search).get('m');var p=location.pathname;if(q==='dev'||q==='web3')m=q;else if(/^\/web3\/?$/.test(p))m='web3';else if(/^\/dev\/?$/.test(p))m='dev';else{var s=localStorage.getItem('mh-mode');if(s==='dev'||s==='web3')m=s;}localStorage.setItem('mh-mode',m);}catch(e){}document.documentElement.setAttribute('data-mode',m);try{if(new URLSearchParams(location.search).get('m'))history.replaceState(null,'','/'+m);}catch(e2){}})();</script>
+<script>(function(){var m='dev',t=null;try{var qs=new URLSearchParams(location.search);var qm=qs.get('m'),qt=qs.get('t');var segs=location.pathname.split('/').filter(Boolean);var MODES={dev:1,web3:1},SECS={about:1,stack:1,services:1,offer:1,journey:1,contact:1};if(qm==='dev'||qm==='web3')m=qm;if(qt&&SECS[qt])t=qt;if(segs.length===2&&MODES[segs[0]]&&SECS[segs[1]]){m=segs[0];t=segs[1];}else if(segs.length===1){if(MODES[segs[0]])m=segs[0];else if(SECS[segs[0]])t=segs[0];}if(!qm&&!qt&&!t){var s=localStorage.getItem('mh-mode');if(s==='dev'||s==='web3')m=s;}localStorage.setItem('mh-mode',m);}catch(e){}window.__MH_T=t;document.documentElement.setAttribute('data-mode',m);try{history.scrollRestoration='manual';}catch(e3){}})();</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Shippori+Mincho:wght@700;800&family=Space+Grotesk:wght@400;500;600;700&family=Zen+Kaku+Gothic+New:wght@500;700;900&display=swap" rel="stylesheet">
@@ -26,41 +26,41 @@
 </head>
 <body>
 
-<a class="skip" href="#about">Skip to content</a>
+<a class="skip" href="/about">Skip to content</a>
 
 <header class="hd" id="hd">
   <div class="wrap hd-in">
-    <a class="logo" href="#top" aria-label="Maruf Hasan — home">maruf<span class="logo-c">_hasan</span><span class="blink" aria-hidden="true">&#9612;</span></a>
+    <a class="logo" href="/" aria-label="Maruf Hasan — home">maruf<span class="logo-c">_hasan</span><span class="blink" aria-hidden="true">&#9612;</span></a>
     <div class="mode" role="group" aria-label="Portfolio mode">
       <button class="mode-b on" type="button" data-setmode="dev">&lt;/&gt; developer</button>
       <button class="mode-b" type="button" data-setmode="web3">web3</button>
     </div>
     <nav class="nav" aria-label="Sections">
-      <a href="#about">about</a>
-      <a href="#stack">stack</a>
-      <a href="#services">services</a>
-      <a href="#offer">hire me</a>
-      <a href="#journey">journey</a>
-      <a href="#contact" class="nav-cta">contact</a>
+      <a href="/about">about</a>
+      <a href="/stack">stack</a>
+      <a href="/services">services</a>
+      <a href="/offer">hire me</a>
+      <a href="/journey">journey</a>
+      <a href="/contact" class="nav-cta">contact</a>
     </nav>
     <span class="pill"><span class="dot" aria-hidden="true"></span>open to work</span>
     <button class="burger" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mnav"><span></span><span></span><span></span></button>
   </div>
 </header>
 
-<a class="promobar wrap-link" href="#offer">
+<a class="promobar wrap-link" href="/offer">
   <span class="pb-dot" aria-hidden="true"></span>
   <span data-for="dev"><strong>i do paid x promotions</strong> — sponsored posts · tool reviews · launches — see how &#8594;</span>
   <span data-for="web3"><strong>open for work</strong> — community growth · content · collabs — see how &#8594;</span>
 </a>
 
 <div class="mnav" id="mnav" hidden>
-  <a href="#about">01 / about</a>
-  <a href="#stack">02 / stack</a>
-  <a href="#services">03 / services</a>
-  <a href="#offer">04 / hire me</a>
-  <a href="#journey">05 / journey</a>
-  <a href="#contact">06 / contact</a>
+  <a href="/about">01 / about</a>
+  <a href="/stack">02 / stack</a>
+  <a href="/services">03 / services</a>
+  <a href="/offer">04 / hire me</a>
+  <a href="/journey">05 / journey</a>
+  <a href="/contact">06 / contact</a>
   <div class="mnav-mode" role="group" aria-label="Portfolio mode">
     <button type="button" data-setmode="dev">developer</button>
     <button type="button" data-setmode="web3">web3</button>
@@ -103,9 +103,9 @@ maruf_hasan — builder</pre></div>
       </div>
 
       <div class="cta rv">
-        <a class="btn-p" href="#services"><span>what i do</span><span aria-hidden="true">-&gt;</span></a>
-        <a class="btn-s" href="#offer" data-for="dev"><span>promote with me</span></a>
-        <a class="btn-s" href="#offer" data-for="web3"><span>grow with me</span></a>
+        <a class="btn-p" href="/services"><span>what i do</span><span aria-hidden="true">-&gt;</span></a>
+        <a class="btn-s" href="/offer" data-for="dev"><span>promote with me</span></a>
+        <a class="btn-s" href="/offer" data-for="web3"><span>grow with me</span></a>
       </div>
     </div>
 
@@ -234,7 +234,7 @@ maruf_hasan — builder</pre></div>
           </ol>
           <div class="cta">
             <a class="btn-p" href="https://x.com/maruf_ix" target="_blank" rel="noopener"><span>dm on x</span><span aria-hidden="true">-&gt;</span></a>
-            <a class="btn-s" href="#contact"><span>or write here</span></a>
+            <a class="btn-s" href="/contact"><span>or write here</span></a>
           </div>
         </article>
       </div>
@@ -261,7 +261,7 @@ maruf_hasan — builder</pre></div>
           </ol>
           <div class="cta">
             <a class="btn-p" href="https://t.me/maruf_ix" target="_blank" rel="noopener"><span>telegram me</span><span aria-hidden="true">-&gt;</span></a>
-            <a class="btn-s" href="#contact"><span>or write here</span></a>
+            <a class="btn-s" href="/contact"><span>or write here</span></a>
           </div>
         </article>
       </div>
@@ -355,7 +355,7 @@ maruf_hasan — builder</pre></div>
     <span class="ok"><span class="dot" aria-hidden="true"></span>open to work</span>
     <span class="ft-mode">mode: <strong id="modeName">developer</strong></span>
     <span>&copy; <span id="yr">2026</span> maruf hasan — marufix.xyz</span>
-    <a href="#top" class="ft-top">back to top ^</a>
+    <a href="/" class="ft-top">back to top ^</a>
   </div>
 </footer>
 

@@ -20,6 +20,12 @@
     web3: '// web3 — communities · content · growth'
   };
   var MODE_NAMES = { dev: 'developer', web3: 'web3' };
+  var curSection = '';
+  var suppressSpyUntil = 0;
+  function canonURL() {
+    var m = root.getAttribute('data-mode') === 'web3' ? 'web3' : 'dev';
+    return '/' + m + (curSection ? '/' + curSection : '');
+  }
 
   /* form topics follow the mode: dev never offers web3 community
      and web3 never offers dev work */
@@ -46,8 +52,9 @@
     try {
       var q = new URLSearchParams(location.search).get('m');
       if (q === 'dev' || q === 'web3') return q;
-      if (/^\/web3\/?$/.test(location.pathname)) return 'web3';
-      if (/^\/dev\/?$/.test(location.pathname)) return 'dev';
+      var segs = location.pathname.split('/').filter(Boolean);
+      if (segs.length === 2 && (segs[0] === 'dev' || segs[0] === 'web3')) return segs[0];
+      if (segs.length === 1 && (segs[0] === 'dev' || segs[0] === 'web3')) return segs[0];
     } catch (e) {}
     return null;
   }
@@ -77,7 +84,7 @@
   function setMode(mode, instant) {
     if (mode !== 'dev' && mode !== 'web3') mode = 'dev';
     try { localStorage.setItem('mh-mode', mode); } catch (e) {}
-    try { history.replaceState(null, '', '/' + mode); } catch (e2) {}
+    try { history.replaceState(null, '', canonURL()); } catch (e2) {}
     closeMenu();
     if (instant || reduceMotion || !main) { paintMode(mode); return; }
     main.classList.add('swap');
@@ -221,8 +228,9 @@
   }
 
   /* ---------------- SCROLLSPY + TOTOP ---------------- */
-  var spyLinks = $$('.nav a[href^="#"]');
-  var spySecs = spyLinks.map(function (a) { return $(a.getAttribute('href')); }).filter(Boolean);
+  var spyLinks = $$('.nav a[href^="/"]');
+  function secIdFromHref(href) { var p = String(href).split('/').filter(Boolean); return p.length ? p[p.length - 1] : null; }
+  var spySecs = spyLinks.map(function (a) { var id = secIdFromHref(a.getAttribute('href')); return id ? document.getElementById(id) : null; }).filter(Boolean);
   var toTop = $('#toTop');
   var ticking = false;
   function onScroll() {
@@ -232,16 +240,39 @@
       var pos = y + 140, cur = spySecs[0];
       spySecs.forEach(function (s) { if (s.offsetTop <= pos) cur = s; });
       spyLinks.forEach(function (a) {
-        a.classList.toggle('act', a.getAttribute('href') === '#' + cur.id);
+        a.classList.toggle('act', secIdFromHref(a.getAttribute('href')) === cur.id);
       });
+      if (Date.now() > suppressSpyUntil && curSection !== cur.id) {
+        curSection = cur.id;
+        try { history.replaceState(null, '', canonURL()); } catch (err2) {}
+      }
     }
     ticking = false;
   }
+  try { history.scrollRestoration = 'manual'; } catch (e) {}
   window.addEventListener('scroll', function () {
     if (!ticking) { requestAnimationFrame(onScroll); ticking = true; }
   }, { passive: true });
   if (toTop) toTop.addEventListener('click', function () {
+    curSection = '';
+    try { history.replaceState(null, '', canonURL()); } catch (e3) {}
     window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+  });
+
+  /* ---------------- CLEAN SECTION LINKS (/mode/section) ---------------- */
+  document.addEventListener('click', function (e) {
+    var a = e.target && e.target.closest ? e.target.closest('a[href^="/"]') : null;
+    if (!a) return;
+    if (a.hostname && a.hostname !== location.hostname) return;
+    var parts = a.getAttribute('href').split('/').filter(Boolean);
+    var target = parts.length ? parts[parts.length - 1] : 'top';
+    var el = target === 'top' ? $('#top') : document.getElementById(target);
+    if (!el) return;
+    e.preventDefault();
+    closeMenu();
+    curSection = target === 'top' ? '' : target;
+    el.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+    try { history.replaceState(null, '', canonURL()); } catch (err) {}
   });
 
   function fallbackCopy(text) {
@@ -330,6 +361,22 @@
 
   /* ---------------- INIT ---------------- */
   paintMode(currentMode());
+  (function () {
+    var t = window.__MH_T;
+    if (t && document.getElementById(t)) {
+      curSection = t;
+      suppressSpyUntil = Date.now() + 2600;
+      var landTwice = function () {
+        var el = document.getElementById(t);
+        if (!el) return;
+        var top = el.getBoundingClientRect().top + (window.scrollY || window.pageYOffset) - 86;
+        window.scrollTo(0, Math.max(0, top));
+        try { history.replaceState(null, '', canonURL()); } catch (e) {}
+      };
+      setTimeout(landTwice, 350);
+      setTimeout(landTwice, 1300);
+    }
+  })();
   runTyper();
   initReveals();
   initStamp();
