@@ -2,36 +2,35 @@
 
 Live: **https://marufix.xyz/** · GitHub Pages (push to `main` = deploy)
 
-## Concept — v3 "paper & ink"
+## Concept — v4, two worlds
 
-Light, matte, editorial single-page site with **two fully separate modes**.
+Light, matte, editorial single page with **two fully separate designs**.
 The header switcher flips `data-mode` on `<html>` (set pre-paint, no flash):
 
-- `dev` — warm paper + matte green. Zero web3 traces.
-- `web3` — cool paper + matte violet. Zero dev traces.
+- **dev** — warm paper + matte green terminal editorial. Zero web3 traces.
+- **web3** — washi paper + sumi ink + vermilion Japanese aesthetic
+  (hanko seal, seigaiha waves, brush strokes, ghost kanji). Zero terminal,
+  zero dev traces.
 
-Separation is CSS-driven: `html[data-mode="dev"] [data-for="web3"] { display:none }`
-and vice versa. No project names, repos or code links anywhere on the site
-(by owner request). Numbers shown are completed historical facts only —
-nothing that needs live updating.
+Separation is CSS-driven (`html[data-mode="dev"] [data-for="web3"]{display:none}`
+and vice versa). No project names, repos or code links anywhere (owner request).
+Only completed historical facts are numbered — nothing needs live updating.
 
-## Design system
+## Design details
 
-- Warm/cool paper backgrounds, ink text, hairlines, hard offset shadows
-- Sharp corners enforced globally (`border-radius: 0 !important`)
-- 2 fonts: Space Grotesk (display) + JetBrains Mono (labels)
-- One accent per mode, film-grain overlay (SVG noise, matte finish)
-- Editorial numbered rows instead of card grids
-- Content visible without JS; JS only enhances (reveals own their start state)
-- `prefers-reduced-motion` respected everywhere
+- Sharp corners enforced globally; film-grain matte finish
+- Dev: Space Grotesk + JetBrains Mono. Web3 adds Shippori Mincho + Zen Kaku Gothic New
+- One accent per mode; editorial numbered rows (no card grids for services)
+- Hanko seal stamps in on scroll; brush strokes draw via stroke-dashoffset
+- Content visible without JS; `prefers-reduced-motion` respected
 
 ## Files
 
 ```
-index.html            Page (dual content via data-for="dev|web3")
+index.html            Dual content via data-for="dev|web3"
 404.html              Themed 404
-css/style.css         Full design system + both themes
-js/main.js            Mode, typer, reveals, counters, form, menu
+css/style.css         Both design systems
+js/main.js            Mode, typer, reveals, stamp, brush, counters, form
 images/profile.webp   Portrait
 favicon.svg           Terminal mark
 CNAME                 marufix.xyz (do not delete)
@@ -39,21 +38,16 @@ CNAME                 marufix.xyz (do not delete)
 
 ## Contact form
 
-Posts to Web3Forms. Needs a free access key or it falls back to opening
-the visitor's mail app (never fakes success):
+Web3Forms when a key is configured, else mail-app fallback (never fakes success):
 
 1. https://web3forms.com → register `marufhasan8009@gmail.com` → verify
-2. Paste the key into `W3F_KEY` in `js/main.js`
+2. Paste key into `W3F_KEY` in `js/main.js`
 3. Push
 
-## Local preview & QA
-
-```sh
-python -m http.server 8000
-```
+## QA checklist
 
 - [ ] Console: 0 errors
-- [ ] No horizontal overflow at 390px / 1440px, both modes
-- [ ] Dev mode shows no web3 content and vice versa (check via DOM)
+- [ ] No overflow at 390px / 1440px, both modes (measure rects, not scrollWidth)
+- [ ] Dev shows no web3 content and vice versa
+- [ ] Sections keep 24px gutters on mobile (`.sec` must not reset side padding)
 - [ ] No `border-radius` in computed styles
-- [ ] Form validation messages appear on bad input

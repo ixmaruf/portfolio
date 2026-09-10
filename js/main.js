@@ -1,7 +1,7 @@
 /* ============================================================
-   MARUF HASAN — v3 interactions
-   mode switch (full content swap) · typer · reveals · counters
-   contact form (Web3Forms w/ honest fallback) · menu · spy
+   MARUF HASAN — v4 interactions
+   mode switch (full swap) · typer · reveals · counters
+   hanko stamp · brush draw · contact form · menu · spy
    No dependencies. Respects reduced motion. Content is visible
    without JS; animations only enhance.
    ============================================================ */
@@ -36,7 +36,7 @@
     var role = $('#roleLine');
     if (role) role.textContent = ROLES[mode];
     var tt = $('#termTitle');
-    if (tt) tt.textContent = mode === 'web3' ? 'maruf@chain: ~/ledger' : 'maruf@web: ~/whoami';
+    if (tt) tt.textContent = 'maruf@web: ~/whoami';
     var name = $('#modeName');
     if (name) name.textContent = MODE_NAMES[mode];
   }
@@ -57,26 +57,19 @@
     b.addEventListener('click', function () { setMode(b.getAttribute('data-setmode')); });
   });
 
-  /* ---------------- TERMINAL TYPER ---------------- */
-  var SCRIPTS = {
-    dev: ['$ whoami', 'maruf_hasan — developer', '$ cat ./focus.txt', 'web apps · ai workflows · pwa', '$ ./ship --prod', '> deployed · tested · done'],
-    web3: ['$ whoami', 'maruf_hasan — community builder', '$ cat ./record.txt', '170K+ members · 500+ tutorials', '$ ./grow --community', '> engagement: healthy']
-  };
+  /* ---------------- TERMINAL TYPER (dev mode) ---------------- */
+  var SCRIPT = ['$ whoami', 'maruf_hasan — developer', '$ cat ./focus.txt', 'web apps · ai workflows · pwa', '$ ./ship --prod', '> deployed · tested · done'];
   var typer = $('#typer');
   function runTyper() {
     if (!typer) return;
-    function script() {
-      return SCRIPTS[root.getAttribute('data-mode')] || SCRIPTS.dev;
-    }
-    if (reduceMotion) { typer.textContent = script().join('\n'); return; }
+    if (reduceMotion) { typer.textContent = SCRIPT.join('\n'); return; }
     var li = 0, ci = 0, out = '';
     function tick() {
-      var lines = script();
-      if (li >= lines.length) {
+      if (li >= SCRIPT.length) {
         setTimeout(function () { li = 0; ci = 0; out = ''; tick(); }, 4600);
         return;
       }
-      var line = lines[li];
+      var line = SCRIPT[li];
       ci++;
       var done = out + line.slice(0, ci);
       typer.textContent = done;
@@ -87,8 +80,6 @@
         setTimeout(tick, line.charAt(0) === '$' ? 48 : 24);
       }
     }
-    new MutationObserver(function () { li = 0; ci = 0; out = ''; })
-      .observe(root, { attributes: true, attributeFilter: ['data-mode'] });
     tick();
   }
 
@@ -112,6 +103,43 @@
       });
     }, { threshold: 0.1, rootMargin: '0px 0px -24px 0px' });
     els.forEach(function (el) { io.observe(el); });
+  }
+
+  /* ---------------- HANKO STAMP ---------------- */
+  function initStamp() {
+    var seal = $('#hanko');
+    if (!seal || reduceMotion || !('IntersectionObserver' in window)) {
+      if (seal) seal.classList.add('stamped');
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { seal.classList.add('stamped'); io.disconnect(); }
+      });
+    }, { threshold: 0.7 });
+    io.observe(seal);
+  }
+
+  /* ---------------- BRUSH STROKE DRAW ---------------- */
+  function initBrush() {
+    var paths = $$('.draw');
+    if (!paths.length || reduceMotion || !('IntersectionObserver' in window)) return;
+    paths.forEach(function (p) {
+      try {
+        var len = p.getTotalLength();
+        p.style.strokeDasharray = String(len);
+        p.style.strokeDashoffset = String(len);
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (en) {
+            if (!en.isIntersecting) return;
+            io.disconnect();
+            p.style.transition = 'stroke-dashoffset 1.4s cubic-bezier(.16,1,.3,1)';
+            p.style.strokeDashoffset = '0';
+          });
+        }, { threshold: 0.4 });
+        io.observe(p);
+      } catch (e) {}
+    });
   }
 
   /* ---------------- COUNTERS (stable historical numbers only) ---------------- */
@@ -235,6 +263,8 @@
   paintMode(currentMode());
   runTyper();
   initReveals();
+  initStamp();
+  initBrush();
   initCounters();
   onScroll();
 })();
