@@ -3,594 +3,311 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MARUF HASAN — Web3 Community Manager</title>
-<meta name="description" content="Maruf Hasan — Web3 Community Manager & Community Builder. 170K+ members managed, 500+ tutorials, 5+ years in crypto.">
-<link rel="preconnect" href="https://fonts.googleapis.com ">
-<link rel="preconnect" href="https://fonts.gstatic.com " crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300 ;400;500;600;700;800;900&family=Montserrat:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800;900&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css ">
+<title>MARUF HASAN — Developer &amp; Web3 Community Builder</title>
+<meta name="description" content="Maruf Hasan — developer shipping web tools (JS, AI workflows, Supabase, Cloudflare) and Web3 community builder (170K+ members, 500+ tutorials). Open for work and X collaborations.">
+<link rel="canonical" href="https://marufix.xyz/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://marufix.xyz/">
+<meta property="og:title" content="MARUF HASAN — Developer &amp; Web3 Community Builder">
+<meta property="og:description" content="I ship web tools and grow Web3 communities. 170K+ members managed, 500+ tutorials, 5+ years in crypto — now building with code.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@maruf_ix">
+<meta name="twitter:title" content="MARUF HASAN — Developer &amp; Web3 Community Builder">
+<meta name="twitter:description" content="Developer + Web3 community builder. Open for work and X collaborations.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Maruf Hasan","url":"https://marufix.xyz/","jobTitle":"Developer and Web3 Community Builder","sameAs":["https://x.com/maruf_ix","https://github.com/ixmaruf"]}
+</script>
 </head>
-<body>
+<body data-mode="dev">
 
-<div id="preloader">
-  <div class="preloader-inner">
-    <div class="preloader-kanji">丸</div>
-    <div class="preloader-bar"><div class="preloader-fill"></div></div>
-    <div class="preloader-text">LOADING</div>
-  </div>
-</div>
+<a class="skip" href="#about">Skip to content</a>
 
-<canvas id="bgCanvas"></canvas>
-<div id="sakura-container"></div>
-<div class="grid-overlay"></div>
-
-<header id="mainHeader" class="site-header">
-  <div class="header-inner">
-    <a href="#hero" class="header-logo">
-      <span class="logo-mark">丸</span>
-      <span class="logo-text">MARUF<span class="logo-dot">.</span></span>
-    </a>
-    <nav class="header-nav" id="mainNav">
-      <a href="#hero" class="nav-link active" data-section="hero">Home</a>
-      <a href="#about" class="nav-link" data-section="about">About</a>
-      <a href="#skills" class="nav-link" data-section="skills">Skills</a>
-      <a href="#experience" class="nav-link" data-section="experience">Journey</a>
-      <a href="#contact" class="nav-link" data-section="contact">Hire Me</a>
-    </nav>
-    <div class="header-status">
-      <span class="status-dot"></span>
-      <span class="status-text">Open to Work</span>
+<header class="hd" id="hd">
+  <div class="wrap hd-in">
+    <a class="logo" href="#top" aria-label="Maruf Hasan — home">maruf<span class="logo-c">_hasan</span><span class="blink" aria-hidden="true">&#9612;</span></a>
+    <div class="mode" role="group" aria-label="Portfolio mode">
+      <button class="mode-b on" type="button" data-setmode="dev">&lt;/&gt; dev</button>
+      <button class="mode-b" type="button" data-setmode="web3">web3</button>
     </div>
-    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
-      <span></span><span></span><span></span>
-    </button>
+    <nav class="nav" aria-label="Sections">
+      <a href="#about">about</a>
+      <a href="#stack">stack</a>
+      <a href="#work">work</a>
+      <a href="#promo">promo</a>
+      <a href="#journey">journey</a>
+      <a href="#contact" class="nav-cta">contact</a>
+    </nav>
+    <span class="pill"><span class="dot" aria-hidden="true"></span>open_to_work</span>
+    <button class="burger" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mnav"><span></span><span></span><span></span></button>
   </div>
 </header>
 
-<div class="mobile-nav-overlay" id="mobileNavOverlay">
-  <div class="mobile-nav-content">
-    <a href="#hero" class="mobile-nav-link" data-index="01">Home</a>
-    <a href="#about" class="mobile-nav-link" data-index="02">About</a>
-    <a href="#skills" class="mobile-nav-link" data-index="03">Skills</a>
-    <a href="#experience" class="mobile-nav-link" data-index="04">Journey</a>
-    <a href="#contact" class="mobile-nav-link" data-index="05">Hire Me</a>
-    <div class="mobile-nav-footer">
-      <div class="mobile-social-links">
-        <a href="https://x.com/maruf_ix " target="_blank" rel="noopener"><i class="fab fa-x-twitter"></i></a>
-        <a href="https://t.me/maruff_ix " target="_blank" rel="noopener"><i class="fab fa-telegram"></i></a>
-        <a href="mailto:marufhasan8009@gmail.com"><i class="fas fa-envelope"></i></a>
-        <a href="#" class="discord-link"><i class="fab fa-discord"></i></a>
-      </div>
-    </div>
+<div class="mnav" id="mnav" hidden>
+  <a href="#about">01 / about</a>
+  <a href="#stack">02 / stack</a>
+  <a href="#work">03 / work</a>
+  <a href="#promo">04 / promo</a>
+  <a href="#journey">05 / journey</a>
+  <a href="#contact">06 / contact</a>
+  <div class="mnav-mode" role="group" aria-label="Portfolio mode">
+    <button type="button" data-setmode="dev">dev</button>
+    <button type="button" data-setmode="web3">web3</button>
   </div>
 </div>
 
-<section id="hero" class="hero-section">
-  <div class="hero-container">
-    <div class="hero-left">
-      <div class="hero-tag fade-up">
-        <span class="tag-line"></span>
-        <span class="tag-text">Web3 Community Manager</span>
-      </div>
-      <h1 class="hero-name fade-up" data-delay="100">
-        <span class="name-line name-first">MARUF</span>
-        <span class="name-line name-last">HASAN<span class="name-accent">.</span></span>
-      </h1>
-      <p class="hero-tagline fade-up" data-delay="200">
-        I help crypto projects <strong>grow</strong> by building <strong>active communities</strong>, creating easy tutorials, and keeping members <strong>engaged</strong> every single day.
-      </p>
-      <div class="hero-stats fade-up" data-delay="300">
-        <div class="stat-item">
-          <span class="stat-number" data-count="170">0</span><span class="stat-suffix">K+</span>
-          <span class="stat-label">Members Managed</span>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat-item">
-          <span class="stat-number" data-count="500">0</span><span class="stat-suffix">+</span>
-          <span class="stat-label">Video Tutorials</span>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat-item">
-          <span class="stat-number" data-count="5">0</span><span class="stat-suffix">+</span>
-          <span class="stat-label">Years in Crypto</span>
-        </div>
-      </div>
-      <div class="hero-cta fade-up" data-delay="400">
-        <a href="#contact" class="btn-primary">
-          <span>Hire Me</span>
-          <i class="fas fa-arrow-right"></i>
-        </a>
-        <a href="#about" class="btn-secondary">
-          <span>Learn More</span>
-        </a>
-      </div>
-    </div>
-    <div class="hero-right fade-up" data-delay="200">
-      <div class="profile-frame">
-        <div class="frame-corner frame-tl"></div>
-        <div class="frame-corner frame-tr"></div>
-        <div class="frame-corner frame-bl"></div>
-        <div class="frame-corner frame-br"></div>
-        <div class="frame-label-top">ポートフォリオ</div>
-        <div class="frame-label-side">COMMUNITY BUILDER</div>
-        <div class="profile-img-wrapper" id="profileImgWrapper">
-          <img src="images/profile.webp" alt="Maruf Hasan — Web3 Community Manager" class="profile-img" id="profileImg" loading="eager">
-          <div class="img-overlay">
-            <span class="img-overlay-text">Click for Color</span>
-          </div>
-        </div>
-        <div class="frame-badge">
-          <span class="badge-dot"></span>
-          <span>Available Now</span>
-        </div>
-      </div>
-      <div class="hero-deco-circle"></div>
-      <div class="hero-deco-plus">+</div>
-      <div class="hero-deco-dots">
-        <span></span><span></span><span></span>
-        <span></span><span></span><span></span>
-        <span></span><span></span><span></span>
-      </div>
-    </div>
-  </div>
-  <div class="scroll-indicator fade-up" data-delay="600">
-    <div class="scroll-line"></div>
-    <span>Scroll Down</span>
-  </div>
-  <div class="hero-side-text">EST. 2018 — CRYPTO & WEB3</div>
-</section>
+<main id="top">
 
-<section id="about" class="about-section">
-  <div class="section-container">
-    <div class="section-header">
-      <div class="section-label fade-up">
-        <span class="label-num">01</span>
-        <span class="label-line"></span>
-        <span class="label-text">About Me</span>
-      </div>
-      <h2 class="section-title fade-up" data-delay="100">
-        <span class="title-line">Who</span>
-        <span class="title-line title-outline">I Am</span>
-      </h2>
-    </div>
-    <div class="about-grid">
-      <div class="about-main fade-up" data-delay="150">
-        <div class="about-drop-cap">I</div>
-        <p class="about-text-lead">
-          'm <strong>Maruf Hasan</strong>, a Web3 Community Manager from Bangladesh. I've been in the crypto world for over <strong>5 years</strong> — trading, finding new projects, and building communities from scratch.
-        </p>
-        <p class="about-text">
-          In 2024–2025, I ran a Telegram channel and group with <strong>170K+ members</strong>. I shared airdrops, testnets, exchange events, and project updates. I also made <strong>500+ tutorial videos</strong> so everyone could easily follow along and join in.
-        </p>
-      </div>
-      <div class="about-sidebar fade-up" data-delay="250">
-        <div class="about-quote-block">
-          <div class="quote-mark">❝</div>
-          <p class="quote-text">I believe in making crypto simple. Whether it's a DeFi tool or a safety setup — I keep things clear and easy for everyone.</p>
-          <div class="quote-author">— Maruf Hasan</div>
-        </div>
-      </div>
-      <div class="about-bottom fade-up" data-delay="300">
-        <div class="about-card">
-          <div class="card-icon"><i class="fas fa-bullseye"></i></div>
-          <h3 class="card-title">My Goal</h3>
-          <p class="card-text">Make crypto easy to understand. I break down complex DeFi tools and blockchain concepts into simple steps anyone can follow.</p>
-        </div>
-        <div class="about-card">
-          <div class="card-icon"><i class="fas fa-rocket"></i></div>
-          <h3 class="card-title">How I Work</h3>
-          <p class="card-text">I don't just manage communities — I build them. From smart bots to daily content, I make sure every member feels welcome and stays active.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="about-deco-line"></div>
-  <div class="about-deco-kanji">信</div>
-</section>
+  <!-- ============ HERO ============ -->
+  <section class="hero wrap">
+    <div class="hero-l">
+      <p class="crumb rv">~/home</p>
+      <h1 class="h-name rv">MARUF<br>HASAN<span class="acc">.</span></h1>
+      <p class="role rv" id="roleLine">// developer — javascript · ai workflows · shipped web tools</p>
+      <p class="lede rv">I build web tools with code and grow Web3 communities with content. Two crafts, one standard: things that actually ship and actually work.</p>
 
-<section id="skills" class="skills-section">
-  <div class="section-container">
-    <div class="section-header">
-      <div class="section-label fade-up">
-        <span class="label-num">02</span>
-        <span class="label-line"></span>
-        <span class="label-text">My Skills</span>
-      </div>
-      <h2 class="section-title fade-up" data-delay="100">
-        <span class="title-line">What</span>
-        <span class="title-line title-outline">I Do</span>
-      </h2>
-    </div>
-    <div class="skills-grid">
-      <div class="skill-card fade-up" data-delay="100">
-        <div class="skill-card-num">01</div>
-        <div class="skill-card-icon"><i class="fab fa-telegram"></i></div>
-        <h3 class="skill-card-title">Telegram Management</h3>
-        <ul class="skill-card-list">
-          <li>Managed 170K+ members</li>
-          <li>Bot setup & automation</li>
-          <li>Anti-spam & security</li>
-          <li>24/7 group moderation</li>
-        </ul>
-      </div>
-      <div class="skill-card fade-up" data-delay="150">
-        <div class="skill-card-num">02</div>
-        <div class="skill-card-icon"><i class="fas fa-video"></i></div>
-        <h3 class="skill-card-title">Content Creation</h3>
-        <ul class="skill-card-list">
-          <li>500+ tutorial videos</li>
-          <li>Step-by-step guides</li>
-          <li>Airdrop walkthroughs</li>
-          <li>DeFi explainers</li>
-        </ul>
-      </div>
-      <div class="skill-card fade-up" data-delay="200">
-        <div class="skill-card-num">03</div>
-        <div class="skill-card-icon"><i class="fab fa-x-twitter"></i></div>
-        <h3 class="skill-card-title">Twitter / X</h3>
-        <ul class="skill-card-list">
-          <li>Thread writing</li>
-          <li>Engagement growth</li>
-          <li>Community interaction</li>
-          <li>Brand voice management</li>
-        </ul>
-      </div>
-      <div class="skill-card fade-up" data-delay="250">
-        <div class="skill-card-num">04</div>
-        <div class="skill-card-icon"><i class="fab fa-discord"></i></div>
-        <h3 class="skill-card-title">Discord</h3>
-        <ul class="skill-card-list">
-          <li>Server setup & design</li>
-          <li>Role & permission management</li>
-          <li>Ticket support systems</li>
-          <li>Community events</li>
-        </ul>
-      </div>
-      <div class="skill-card fade-up" data-delay="300">
-        <div class="skill-card-num">05</div>
-        <div class="skill-card-icon"><i class="fas fa-chart-line"></i></div>
-        <h3 class="skill-card-title">Growth & Campaigns</h3>
-        <ul class="skill-card-list">
-          <li>Zealy / Galxe campaigns</li>
-          <li>User growth strategies</li>
-          <li>Performance tracking</li>
-          <li>Reward programs</li>
-        </ul>
-      </div>
-      <div class="skill-card fade-up" data-delay="350">
-        <div class="skill-card-num">06</div>
-        <div class="skill-card-icon"><i class="fas fa-palette"></i></div>
-        <h3 class="skill-card-title">Design & Visuals</h3>
-        <ul class="skill-card-list">
-          <li>Social media graphics</li>
-          <li>Banner & poster design</li>
-          <li>Infographics</li>
-          <li>Brand identity</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <div class="skills-deco-kanji">技</div>
-</section>
-
-<section id="experience" class="experience-section">
-  <div class="section-container">
-    <div class="section-header">
-      <div class="section-label fade-up">
-        <span class="label-num">03</span>
-        <span class="label-line"></span>
-        <span class="label-text">Experience</span>
-      </div>
-      <h2 class="section-title fade-up" data-delay="100">
-        <span class="title-line">My</span>
-        <span class="title-line title-outline">Journey</span>
-      </h2>
-    </div>
-    <p class="experience-intro fade-up" data-delay="150">From a curious crypto fan to managing one of the largest Telegram communities — here's my story.</p>
-    <div class="timeline">
-      <div class="timeline-item fade-up" data-delay="200">
-        <div class="timeline-marker">
-          <div class="marker-year">2024</div>
-          <div class="marker-dot"></div>
-          <div class="marker-line"></div>
-        </div>
-        <div class="timeline-content">
-          <div class="timeline-badge">Latest</div>
-          <h3 class="timeline-title">Community Manager</h3>
-          <div class="timeline-sub">Telegram Channel & Group — 2024 to 2025</div>
-          <p class="timeline-text">Built and managed a <strong>170K+ member</strong> community. Created <strong>500+ tutorial videos</strong> covering airdrops, testnets, exchange events, and DeFi guides. Kept the community safe, active, and growing every day.</p>
-          <div class="timeline-tags">
-            <span class="t-tag">Telegram</span>
-            <span class="t-tag">Airdrops</span>
-            <span class="t-tag">Tutorials</span>
-            <span class="t-tag">DeFi</span>
-          </div>
-        </div>
-      </div>
-      <div class="timeline-item fade-up" data-delay="250">
-        <div class="timeline-marker">
-          <div class="marker-year">2020</div>
-          <div class="marker-dot"></div>
-          <div class="marker-line"></div>
-        </div>
-        <div class="timeline-content">
-          <h3 class="timeline-title">Crypto Researcher & Trader</h3>
-          <div class="timeline-sub">Independent — 2020 to 2023</div>
-          <p class="timeline-text">Spent years actively trading crypto and researching new projects. Got into DeFi, NFTs, and testnets early. Learned the ins and outs of the blockchain world through real experience.</p>
-          <div class="timeline-tags">
-            <span class="t-tag">Trading</span>
-            <span class="t-tag">DeFi</span>
-            <span class="t-tag">NFTs</span>
-            <span class="t-tag">Research</span>
-          </div>
-        </div>
-      </div>
-      <div class="timeline-item fade-up" data-delay="300">
-        <div class="timeline-marker">
-          <div class="marker-year">2018</div>
-          <div class="marker-dot"></div>
-        </div>
-        <div class="timeline-content">
-          <h3 class="timeline-title">Crypto Enthusiast</h3>
-          <div class="timeline-sub">Self-Learning — 2018 to 2020</div>
-          <p class="timeline-text">Started exploring cryptocurrency and blockchain technology. Joined early airdrops and began understanding how this exciting new world works from the ground up.</p>
-          <div class="timeline-tags">
-            <span class="t-tag">Blockchain</span>
-            <span class="t-tag">Airdrops</span>
-            <span class="t-tag">Learning</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="education-block fade-up" data-delay="350">
-      <div class="edu-deco">学</div>
-      <div class="edu-content">
-        <div class="edu-label">Education</div>
-        <h3 class="edu-title">BBA Honours (Management)</h3>
-        <div class="edu-status">3rd Year Student</div>
-        <p class="edu-text">Studying management gives me a strong base for organizing teams, planning strategies, and leading communities the right way.</p>
-      </div>
-    </div>
-  </div>
-  <div class="experience-deco-kanji">歴</div>
-</section>
-
-<section id="contact" class="contact-section">
-  <div class="section-container">
-    <div class="section-header">
-      <div class="section-label fade-up">
-        <span class="label-num">04</span>
-        <span class="label-line"></span>
-        <span class="label-text">Get in Touch</span>
-      </div>
-      <h2 class="section-title fade-up" data-delay="100">
-        <span class="title-line">Let's</span>
-        <span class="title-line title-outline">Work Together</span>
-      </h2>
-    </div>
-    <p class="contact-intro fade-up" data-delay="150">Looking for someone to manage your Web3 community? I'd love to hear about your project. Let's talk and see how I can help you grow.</p>
-    <div class="contact-grid">
-      <div class="contact-info fade-up" data-delay="200">
-        <a href="https://x.com/maruf_ix " target="_blank" rel="noopener" class="contact-card">
-          <div class="contact-card-icon"><i class="fab fa-x-twitter"></i></div>
-          <div class="contact-card-body">
-            <div class="contact-card-label">Twitter / X</div>
-            <div class="contact-card-value">@maruf_ix</div>
-          </div>
-          <i class="fas fa-arrow-up-right-from-square contact-card-arrow"></i>
-        </a>
-        <a href="https://t.me/maruff_ix " target="_blank" rel="noopener" class="contact-card">
-          <div class="contact-card-icon"><i class="fab fa-telegram"></i></div>
-          <div class="contact-card-body">
-            <div class="contact-card-label">Telegram</div>
-            <div class="contact-card-value">@maruff_ix</div>
-          </div>
-          <i class="fas fa-arrow-up-right-from-square contact-card-arrow"></i>
-        </a>
-        <a href="mailto:marufhasan8009@gmail.com" class="contact-card">
-          <div class="contact-card-icon"><i class="fas fa-envelope"></i></div>
-          <div class="contact-card-body">
-            <div class="contact-card-label">Email</div>
-            <div class="contact-card-value">marufhasan8009@gmail.com</div>
-          </div>
-          <i class="fas fa-arrow-up-right-from-square contact-card-arrow"></i>
-        </a>
-        <div class="contact-card no-link">
-          <div class="contact-card-icon"><i class="fab fa-discord"></i></div>
-          <div class="contact-card-body">
-            <div class="contact-card-label">Discord</div>
-            <div class="contact-card-value">maruf_ix</div>
-          </div>
-        </div>
-      </div>
-      <div class="contact-form-wrapper fade-up" data-delay="300">
-        <form class="contact-form" id="contactForm">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="firstName">First Name</label>
-              <input type="text" id="firstName" name="firstName" required placeholder="Your first name">
-            </div>
-            <div class="form-group">
-              <label for="lastName">Last Name</label>
-              <input type="text" id="lastName" name="lastName" required placeholder="Your last name">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required placeholder="you@example.com">
-          </div>
-          <div class="form-group">
-            <label for="projectUrl">Project URL <span class="optional">(Optional)</span></label>
-            <input type="url" id="projectUrl" name="projectUrl" placeholder="https://yourproject.com ">
-          </div>
-          <div class="form-group">
-            <label for="budget">Budget Range</label>
-            <select id="budget" name="budget" required>
-              <option value="" disabled selected>Select your budget</option>
-              <option value="under500">Under $500</option>
-              <option value="500-1000">$500 — $1,000</option>
-              <option value="1000-5000">$1,000 — $5,000</option>
-              <option value="5000+">$5,000+</option>
-              <option value="networking">Just Networking</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="5" required placeholder="Tell me about your project..."></textarea>
-          </div>
-          <button type="submit" class="btn-submit">
-            <span>Send Message</span>
-            <i class="fas fa-paper-plane"></i>
-          </button>
-        </form>
-        <div class="form-success" id="formSuccess">
-          <i class="fas fa-check-circle"></i>
-          <h3>Message Sent!</h3>
-          <p>Thank you for reaching out. I'll get back to you as soon as possible.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="contact-deco-kanji">繋</div>
-</section>
-
-<footer class="site-footer">
-  <div class="footer-inner">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <span class="footer-logo-mark">丸</span>
-        <span class="footer-name">MARUF HASAN</span>
-        <span class="footer-title">Web3 Community Manager</span>
-      </div>
-      <div class="footer-social">
-        <a href="https://x.com/maruf_ix " target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
-        <a href="https://t.me/maruff_ix " target="_blank" rel="noopener" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
-        <a href="mailto:marufhasan8009@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
-        <a href="#" aria-label="Discord"><i class="fab fa-discord"></i></a>
-      </div>
-    </div>
-    <div class="footer-divider"></div>
-    <div class="footer-bottom">
-      <div class="footer-copy">&copy; 2025 Maruf Hasan. All rights reserved.</div>
-      
-      <div class="visitor-counter" id="visitorCounter" style="display: flex !important;">
-        <div class="vc-item">
-          <span class="vc-label">Today</span>
-          <span class="vc-number" id="todayVisits">—</span>
-        </div>
-        <div class="vc-divider"></div>
-        <div class="vc-item">
-          <span class="vc-label">Total</span>
-          <span class="vc-number" id="totalVisits">—</span>
-        </div>
-        <div class="vc-live-dot"></div>
+      <div class="term rv" aria-label="Terminal introduction">
+        <div class="term-bar"><span class="sq"></span><span class="sq"></span><span class="sq"></span><span class="term-t">maruf@web: ~/whoami</span></div>
+        <div class="term-bd"><pre id="typer" aria-live="polite">$ whoami
+maruf_hasan — builder</pre></div>
       </div>
 
+      <div class="stats rv">
+        <div class="stat"><span class="stat-n"><span data-count="170">0</span>K+</span><span class="stat-l">members managed</span></div>
+        <div class="stat"><span class="stat-n"><span data-count="500">0</span>+</span><span class="stat-l">tutorials published</span></div>
+        <div class="stat"><span class="stat-n"><span data-count="5">0</span>+</span><span class="stat-l">years in crypto</span></div>
+        <div class="stat"><span class="stat-n"><span data-count="1.6" data-dec="1">0</span>K</span><span class="stat-l">X followers</span></div>
+      </div>
+
+      <div class="cta rv">
+        <a class="btn-p" href="#work"><span>view_my_work</span><span aria-hidden="true">-&gt;</span></a>
+        <a class="btn-s" href="#promo"><span>promote_with_me</span></a>
+      </div>
     </div>
+
+    <div class="hero-r rv">
+      <figure class="frame">
+        <span class="cn tl" aria-hidden="true"></span><span class="cn tr" aria-hidden="true"></span>
+        <span class="cn bl" aria-hidden="true"></span><span class="cn br" aria-hidden="true"></span>
+        <img src="images/profile.webp" alt="Portrait of Maruf Hasan" width="640" height="640" fetchpriority="high">
+        <figcaption class="frame-tag">available_now</figcaption>
+      </figure>
+      <dl class="spec">
+        <div><dt>location</dt><dd>dhaka, bd [utc+6]</dd></div>
+        <div><dt>focus</dt><dd>dev tools + web3 growth</dd></div>
+        <div><dt>status</dt><dd class="ok">open_to_work: true</dd></div>
+        <div><dt>pgp?</dt><dd>no — just dm me</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ============ TICKER ============ -->
+  <div class="tick" aria-hidden="true"><div class="tick-in">
+    <span>javascript</span><span>node</span><span>python</span><span>supabase</span><span>cloudflare workers</span><span>pwa</span><span>rest apis</span><span>ai agents</span><span>telegram ops</span><span>x growth</span><span>content engine</span><span>defi guides</span>
+    <span>javascript</span><span>node</span><span>python</span><span>supabase</span><span>cloudflare workers</span><span>pwa</span><span>rest apis</span><span>ai agents</span><span>telegram ops</span><span>x growth</span><span>content engine</span><span>defi guides</span>
+  </div></div>
+
+  <!-- ============ 01 ABOUT ============ -->
+  <section class="sec wrap" id="about">
+    <p class="s-label rv"><span>01</span> // about</p>
+    <h2 class="s-t rv">two crafts.<br><span class="out">one standard.</span></h2>
+    <div class="cols2">
+      <article class="card rv">
+        <p class="card-k">&gt; developer</p>
+        <h3>Ship tools people use</h3>
+        <p>I design and build for the web — downloaders, calculators, community sites, full-stack apps with real backends. Static where static wins, databases and workers where the product needs them.</p>
+        <ul class="ticks">
+          <li>web apps &amp; tools, end to end</li>
+          <li>pwa — installable, offline-ready</li>
+          <li>supabase + cloudflare workers backends</li>
+          <li>ai-assisted workflow, human-reviewed output</li>
+        </ul>
+      </article>
+      <article class="card rv">
+        <p class="card-k">&gt; web3 builder</p>
+        <h3>Grow communities that stay</h3>
+        <p>Five years in crypto. Ran a 170K+ Telegram community, published 500+ step-by-step tutorials, and now run an X account where developers come for free AI tools, credits and setups.</p>
+        <ul class="ticks">
+          <li>170K+ members managed daily</li>
+          <li>airdrops, testnets, defi — explained simply</li>
+          <li>x content developers actually save</li>
+          <li>campaigns: zealy / galxe / quests</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ 02 STACK ============ -->
+  <section class="sec wrap" id="stack">
+    <p class="s-label rv"><span>02</span> // arsenal</p>
+    <h2 class="s-t rv">what i <span class="out">work with</span></h2>
+    <div class="cols2">
+      <article class="card rv">
+        <p class="card-k">&gt; dev_stack</p>
+        <div class="tags">
+          <span>javascript</span><span>node.js</span><span>python</span><span>html / css</span><span>pwa + service workers</span><span>supabase</span><span>cloudflare workers</span><span>rest apis</span><span>git + github</span><span>vercel / pages deploy</span>
+        </div>
+        <p class="note">currently exploring: ai agent workflows, model routing, edge compute.</p>
+      </article>
+      <article class="card rv">
+        <p class="card-k">&gt; web3_stack</p>
+        <div class="tags">
+          <span>telegram ops at scale</span><span>x growth + threads</span><span>discord servers</span><span>content engine</span><span>video tutorials</span><span>defi / testnet guides</span><span>zealy / galxe</span><span>anti-spam + safety</span><span>analytics</span>
+        </div>
+        <p class="note">currently: posting free ai tools, credits &amp; dev setups on x.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ 03 WORK ============ -->
+  <section class="sec wrap" id="work">
+    <p class="s-label rv"><span>03</span> // work</p>
+    <h2 class="s-t rv">selected <span class="out">output</span></h2>
+    <div class="filters rv" role="group" aria-label="Filter projects">
+      <button type="button" data-filter="dev" class="on">dev builds</button>
+      <button type="button" data-filter="web3">web3 work</button>
+      <button type="button" data-filter="all">all</button>
+    </div>
+    <div class="grid3" id="projGrid">
+      <article class="card p rv" data-cat="dev">
+        <p class="card-k">p.01 — web tool</p>
+        <h3>Toolsfast.online</h3>
+        <p>Free video downloader for TikTok, Instagram and Facebook. Multi-page static app on GitHub Pages, tuned to fit one screen.</p>
+        <div class="tags sm"><span>javascript</span><span>static</span><span>github pages</span></div>
+        <p class="links"><a href="https://toolsfast.online" target="_blank" rel="noopener">live &#8599;</a><a href="https://github.com/ixmaruf/toolfast" target="_blank" rel="noopener">code &#8599;</a></p>
+      </article>
+      <article class="card p rv" data-cat="dev">
+        <p class="card-k">p.02 — full-stack</p>
+        <h3>Yarz-Pro</h3>
+        <p>Community platform rebuild with a real backend — Supabase data layer plus Cloudflare Workers at the edge.</p>
+        <div class="tags sm"><span>supabase</span><span>workers</span><span>full-stack</span></div>
+        <p class="links"><a href="https://github.com/ixmaruf/Yarz-Pro" target="_blank" rel="noopener">code &#8599;</a></p>
+      </article>
+      <article class="card p rv" data-cat="dev">
+        <p class="card-k">p.03 — web app</p>
+        <h3>Yarz</h3>
+        <p>Multi-page community and dev-notes site — articles, community pages and contact flow in one static codebase.</p>
+        <div class="tags sm"><span>javascript</span><span>static</span><span>content</span></div>
+        <p class="links"><a href="https://github.com/ixmaruf/Yarz" target="_blank" rel="noopener">code &#8599;</a></p>
+      </article>
+      <article class="card p rv" data-cat="dev">
+        <p class="card-k">p.04 — pwa</p>
+        <h3>Cal</h3>
+        <p>Installable calculator PWA — manifest, service worker and offline support. Small, fast, does one job well.</p>
+        <div class="tags sm"><span>pwa</span><span>offline</span><span>javascript</span></div>
+        <p class="links"><a href="https://github.com/ixmaruf/Cal" target="_blank" rel="noopener">code &#8599;</a></p>
+      </article>
+      <article class="card p rv" data-cat="web3">
+        <p class="card-k">w.01 — nft / gaming</p>
+        <h3>Dudes Craft portal</h3>
+        <p>Whitelist portal for 1,999 voxel warriors on Robinhood Network — Canvas engine front-end with store integration.</p>
+        <div class="tags sm"><span>nft</span><span>canvas</span><span>whitelist</span></div>
+        <p class="links"><a href="https://dudescraft.store" target="_blank" rel="noopener">live &#8599;</a><a href="https://github.com/ixmaruf/blockbit-ink" target="_blank" rel="noopener">code &#8599;</a></p>
+      </article>
+      <article class="card p rv" data-cat="web3">
+        <p class="card-k">w.02 — community ops</p>
+        <h3>170K Telegram community</h3>
+        <p>Built and ran a 170K+ channel + group through 2024–2025: bots, anti-spam, daily drops, events. Active every single day.</p>
+        <div class="tags sm"><span>telegram</span><span>moderation</span><span>events</span></div>
+      </article>
+      <article class="card p rv" data-cat="web3">
+        <p class="card-k">w.03 — content</p>
+        <h3>500+ tutorial engine</h3>
+        <p>Airdrops, testnets and DeFi walkthroughs broken into steps anyone can follow. Now the same engine runs on X for AI dev tools.</p>
+        <div class="tags sm"><span>tutorials</span><span>defi</span><span>video</span></div>
+        <p class="links"><a href="https://x.com/maruf_ix" target="_blank" rel="noopener">see posts &#8599;</a></p>
+      </article>
+      <article class="card p rv" data-cat="web3">
+        <p class="card-k">w.04 — distribution</p>
+        <h3>@maruf_ix on X</h3>
+        <p>1.6K followers, 10.4K posts. Free AI credits, model access and coding setups — the posts developers bookmark.</p>
+        <div class="tags sm"><span>x growth</span><span>ai tools</span><span>threads</span></div>
+        <p class="links"><a href="https://x.com/maruf_ix" target="_blank" rel="noopener">profile &#8599;</a></p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ 04 PROMO ============ -->
+  <section class="sec wrap" id="promo">
+    <p class="s-label rv"><span>04</span> // promo &amp; collab</p>
+    <h2 class="s-t rv">reach developers<br><span class="out">through my x.</span></h2>
+    <p class="lede2 rv">Brands and tools DM me for one reason: my audience saves, bookmarks and tries what I post. If your product is genuinely useful for developers, let's talk.</p>
+    <div class="stats rv">
+      <div class="stat"><span class="stat-n"><span data-count="1.6" data-dec="1">0</span>K</span><span class="stat-l">x followers</span></div>
+      <div class="stat"><span class="stat-n"><span data-count="10.4" data-dec="1">0</span>K</span><span class="stat-l">posts published</span></div>
+      <div class="stat"><span class="stat-n"><span data-count="2.6" data-dec="1">0</span>K+</span><span class="stat-l">peak post views</span></div>
+      <div class="stat"><span class="stat-n">&lt;24h</span><span class="stat-l">dm response</span></div>
+    </div>
+    <div class="cols2">
+      <article class="card rv">
+        <p class="card-k">&gt; services</p>
+        <ol class="svc">
+          <li><strong>sponsored posts</strong><span>single or thread — free credits, launches, features</span></li>
+          <li><strong>tool reviews</strong><span>i actually use it first, then post the walkthrough</span></li>
+          <li><strong>launch shoutouts</strong><span>timed posts for releases, drops and events</span></li>
+          <li><strong>referral pushes</strong><span>tracked links, honest framing, real signups</span></li>
+        </ol>
+      </article>
+      <article class="card rv">
+        <p class="card-k">&gt; process</p>
+        <ol class="svc">
+          <li><strong>01 — dm</strong><span>tell me the product + goal + timeline</span></li>
+          <li><strong>02 — brief</strong><span>we agree angle, format and posting slot</span></li>
+          <li><strong>03 — publish</strong><span>post goes live, stats shared after</span></li>
+        </ol>
+        <div class="cta">
+          <a class="btn-p" href="https://x.com/maruf_ix" target="_blank" rel="noopener"><span>dm_on_x</span><span aria-hidden="true">-&gt;</span></a>
+          <a class="btn-s" href="https://t.me/maruff_ix" target="_blank" rel="noopener"><span>telegram</span></a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ 05 JOURNEY ============ -->
+  <section class="sec wrap" id="journey">
+    <p class="s-label rv"><span>05</span> // journey</p>
+    <h2 class="s-t rv">the log <span class="out">so far</span></h2>
+    <ol class="tl">
+      <li class="rv"><span class="yr">2026</span><div><h3>Shipping code <span class="chip dev">dev</span></h3><p>Toolsfast, Yarz-Pro with Supabase + Workers, the Dudes Craft portal. Developer is no longer a side quest.</p></div></li>
+      <li class="rv"><span class="yr">2025</span><div><h3>X creator — AI dev tools <span class="chip both">dev + web3</span></h3><p>10.4K posts on free AI models, credits and coding setups. 1.6K followers who build things.</p></div></li>
+      <li class="rv"><span class="yr">2024</span><div><h3>170K community manager <span class="chip web3">web3</span></h3><p>Ran channel + group, 500+ tutorials, daily operations through 2025.</p></div></li>
+      <li class="rv"><span class="yr">2020</span><div><h3>Trader &amp; researcher <span class="chip web3">web3</span></h3><p>DeFi, NFTs, testnets — learned markets with real skin in the game.</p></div></li>
+      <li class="rv"><span class="yr">2018</span><div><h3>First wallet <span class="chip web3">web3</span></h3><p>Fell down the rabbit hole. Never climbed out — just learned to build in it.</p></div></li>
+    </ol>
+    <div class="edu rv"><span class="edu-k">education</span><div><strong>BBA Honours, Management</strong><span> — 3rd year. Useful more often than people expect: planning, teams, process.</span></div></div>
+  </section>
+
+  <!-- ============ 06 CONTACT ============ -->
+  <section class="sec wrap" id="contact">
+    <p class="s-label rv"><span>06</span> // contact</p>
+    <h2 class="s-t rv">no forms. <span class="out">just dm.</span></h2>
+    <p class="lede2 rv">Fastest reply is on X. For work, include scope + timeline. For promos, include product + goal.</p>
+    <div class="grid3">
+      <a class="card ch rv" href="https://x.com/maruf_ix" target="_blank" rel="noopener"><p class="card-k">01 / fastest</p><h3>X — @maruf_ix</h3><p>DMs open. Work, promos, questions.</p><span class="go">open &#8599;</span></a>
+      <a class="card ch rv" href="https://t.me/maruff_ix" target="_blank" rel="noopener"><p class="card-k">02 / chat</p><h3>Telegram</h3><p>Quick back-and-forth, files, voice.</p><span class="go">open &#8599;</span></a>
+      <a class="card ch rv" href="mailto:marufhasan8009@gmail.com"><p class="card-k">03 / formal</p><h3>Email</h3><p>marufhasan8009@gmail.com</p><span class="go">write &#8599;</span></a>
+      <a class="card ch rv" href="https://github.com/ixmaruf" target="_blank" rel="noopener"><p class="card-k">04 / code</p><h3>GitHub — ixmaruf</h3><p>Read the code before you hire the dev.</p><span class="go">open &#8599;</span></a>
+      <button class="card ch rv" id="dcBtn" type="button"><p class="card-k">05 / community</p><h3>Discord</h3><p>maruf_ix — <span id="dcMsg">click to copy</span></p><span class="go" id="dcGo">copy</span></button>
+    </div>
+  </section>
+
+</main>
+
+<footer class="ft">
+  <div class="wrap ft-in">
+    <span class="ok"><span class="dot" aria-hidden="true"></span>open_to_work</span>
+    <span class="ft-mode">mode: <strong id="modeName">developer</strong></span>
+    <span>&copy; <span id="yr">2026</span> maruf hasan — marufix.xyz</span>
+    <a href="#top" class="ft-top">back_to_top ^</a>
   </div>
 </footer>
 
-<button class="back-to-top" id="backToTop" aria-label="Back to top">
-  <i class="fas fa-arrow-up"></i>
-</button>
+<button class="top" id="toTop" type="button" aria-label="Back to top">&uarr;</button>
 
-<script src="js/main.js"></script>
-
-<!--
-══════════════════════════════════════════════════════════════════════════════
- VISITOR COUNTER v8.0 — ULTIMATE BULLETPROOF EDITION
-
- Strategy:
-   Firebase (primary data store) + CounterAPI (backup display) + localStorage
-   Both APIs increment simultaneously. First response wins the display.
-   If your ISP blocks Firebase → CounterAPI shows instead.
-   If both fail → localStorage fallback (per-device, always works).
-
- Features:
-   ✅ Completely independent of main.js — won't break if main.js crashes
-   ✅ Wrapped in setTimeout + try-catch — DOM always ready, errors caught
-   ✅ RACE pattern — fastest API wins display
-   ✅ Both APIs always increment — no data loss
-   ✅ Today resets at midnight Dhaka time (UTC+6)
-   ✅ Total accumulates forever
-   ✅ Every page load/refresh = +1
-   ✅ 10s timeout per API — won't hang forever
-   ✅ 15s failsafe — localStorage kicks in if all APIs fail
-   ✅ Cache shows instantly on load (no flash of "—")
-   ✅ Works on GitHub Pages, Netlify, Vercel, any static host
-   ✅ Works on all browsers and devices
-══════════════════════════════════════════════════════════════════════════════
--->
-<script>
-setTimeout(function(){try{(function(){'use strict';
-
-/* ── Config ── */
-var FB='https://maruf-42ebb-default-rtdb.asia-southeast1.firebasedatabase.app ';
-var NS='marufhasanportfolio2025';
-var CK='mhvc8';
-
-/* ── DOM elements ── */
-var tE=document.getElementById('todayVisits');
-var aE=document.getElementById('totalVisits');
-if(!tE||!aE)return;
-
-/* ── Dhaka date (UTC+6) ── */
-function gd(){
-  try{return new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Dhaka',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());}
-  catch(e){var d=new Date(Date.now()+21600000);return d.toISOString().slice(0,10);}
-}
-var TD=gd(),TK=TD.replace(/-/g,'');
-
-/* ── Show cache INSTANTLY ── */
-var cc={};try{cc=JSON.parse(localStorage.getItem(CK)||'{}');}catch(e){cc={};}
-if(cc.t>0)aE.textContent=cc.t;
-if(cc.d===TD&&cc.y>0)tE.textContent=cc.y;else tE.textContent='0';
-
-function sc(t,y){try{localStorage.setItem(CK,JSON.stringify({t:t,y:y,d:TD}));}catch(e){}}
-
-/* ── Fetch with timeout ── */
-function ft(u,o,m){m=m||10000;return new Promise(function(ok,no){
-  var dn=false,tm=setTimeout(function(){if(!dn){dn=true;no(new Error('timeout'));}},m);
-  fetch(u,o||{}).then(function(r){if(!dn){dn=true;clearTimeout(tm);ok(r);}})
-  .catch(function(e){if(!dn){dn=true;clearTimeout(tm);no(e);}});
-});}
-
-/* ── Display once ── */
-var done=false;
-function show(t,y){if(done)return;done=true;if(t>0)aE.textContent=t;if(y>0)tE.textContent=y;sc(t,y);}
-
-/* ══ Firebase: read → increment → write ══ */
-function fbI(p){var u=FB+p+'.json';
-  return ft(u).then(function(r){if(!r.ok)throw new Error(r.status);return r.json();})
-  .then(function(v){var n=(typeof v==='number'?v:0)+1;
-  return ft(u,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(n)})
-  .then(function(r){if(!r.ok)throw new Error(r.status);return r.json();});});}
-
-function goFB(){return Promise.all([fbI('/visitors/total'),fbI('/visitors/daily/'+TK)])
-  .then(function(r){show(r[0],r[1]);});}
-
-/* ══ CounterAPI: simple increment endpoint ══ */
-function goCA(){var b='https://api.counterapi.dev/v1 ';
-  return Promise.all([
-    ft(b+'/'+NS+'/totalvisits/up').then(function(r){if(!r.ok)throw new Error(r.status);return r.json();}).then(function(d){return d.count;}),
-    ft(b+'/'+NS+'/today'+TK+'/up').then(function(r){if(!r.ok)throw new Error(r.status);return r.json();}).then(function(d){return d.count;})
-  ]).then(function(r){show(r[0],r[1]);});}
-
-/* ══ localStorage fallback ══ */
-function goLS(){var d={};try{d=JSON.parse(localStorage.getItem(CK+'_l')||'{}');}catch(e){d={};}
-  if(d.d!==TD){d.d=TD;d.y=0;}d.y=(d.y||0)+1;d.t=(d.t||0)+1;
-  try{localStorage.setItem(CK+'_l',JSON.stringify(d));}catch(e){}show(d.t,d.y);}
-
-/* ══ LAUNCH: Race both APIs simultaneously ══ */
-goFB().catch(function(){});
-goCA().catch(function(){});
-
-/* ══ Failsafe: 15 seconds, then localStorage ══ */
-setTimeout(function(){if(!done)goLS();},15000);
-
-})();}catch(e){}},100);
-</script>
-
+<script src="js/main.js" defer></script>
 </body>
 </html>
