@@ -67,11 +67,15 @@
     <div class="hero-l">
       <p class="crumb rv">~/home</p>
       <h1 class="h-name rv">MARUF<br>HASAN<span class="acc">.</span></h1>
-      <p class="role rv" id="roleLine">// developer — javascript · ai workflows · shipped web tools</p>
+      <p class="role rv" id="roleLine">// developer — js · ai workflows · web tools</p>
+      <div class="hero-mode rv" role="group" aria-label="Portfolio mode">
+        <button class="mode-b on" type="button" data-setmode="dev">&lt;/&gt; developer</button>
+        <button class="mode-b" type="button" data-setmode="web3">web3</button>
+      </div>
       <p class="lede rv">I build web tools with code and grow Web3 communities with content. Two crafts, one standard: things that actually ship and actually work.</p>
 
       <div class="term rv" aria-label="Terminal introduction">
-        <div class="term-bar"><span class="sq"></span><span class="sq"></span><span class="sq"></span><span class="term-t">maruf@web: ~/whoami</span></div>
+        <div class="term-bar"><span class="sq"></span><span class="sq"></span><span class="sq"></span><span class="term-t" id="termTitle">maruf@web: ~/whoami</span></div>
         <div class="term-bd"><pre id="typer" aria-live="polite">$ whoami
 maruf_hasan — builder</pre></div>
       </div>
@@ -97,19 +101,12 @@ maruf_hasan — builder</pre></div>
         <figcaption class="frame-tag">available_now</figcaption>
       </figure>
       <dl class="spec">
-        <div><dt>location</dt><dd>dhaka, bd [utc+6]</dd></div>
         <div><dt>focus</dt><dd>dev tools + web3 growth</dd></div>
         <div><dt>status</dt><dd class="ok">open_to_work: true</dd></div>
-        <div><dt>pgp?</dt><dd>no — just dm me</dd></div>
+        <div><dt>response</dt><dd>&lt;24h on x dm</dd></div>
       </dl>
     </div>
   </section>
-
-  <!-- ============ TICKER ============ -->
-  <div class="tick" aria-hidden="true"><div class="tick-in">
-    <span>javascript</span><span>node</span><span>python</span><span>supabase</span><span>cloudflare workers</span><span>pwa</span><span>rest apis</span><span>ai agents</span><span>telegram ops</span><span>x growth</span><span>content engine</span><span>defi guides</span>
-    <span>javascript</span><span>node</span><span>python</span><span>supabase</span><span>cloudflare workers</span><span>pwa</span><span>rest apis</span><span>ai agents</span><span>telegram ops</span><span>x growth</span><span>content engine</span><span>defi guides</span>
-  </div></div>
 
   <!-- ============ 01 ABOUT ============ -->
   <section class="sec wrap" id="about">
@@ -284,14 +281,35 @@ maruf_hasan — builder</pre></div>
   <!-- ============ 06 CONTACT ============ -->
   <section class="sec wrap" id="contact">
     <p class="s-label rv"><span>06</span> // contact</p>
-    <h2 class="s-t rv">no forms. <span class="out">just dm.</span></h2>
-    <p class="lede2 rv">Fastest reply is on X. For work, include scope + timeline. For promos, include product + goal.</p>
-    <div class="grid3">
-      <a class="card ch rv" href="https://x.com/maruf_ix" target="_blank" rel="noopener"><p class="card-k">01 / fastest</p><h3>X — @maruf_ix</h3><p>DMs open. Work, promos, questions.</p><span class="go">open &#8599;</span></a>
-      <a class="card ch rv" href="https://t.me/maruff_ix" target="_blank" rel="noopener"><p class="card-k">02 / chat</p><h3>Telegram</h3><p>Quick back-and-forth, files, voice.</p><span class="go">open &#8599;</span></a>
-      <a class="card ch rv" href="mailto:marufhasan8009@gmail.com"><p class="card-k">03 / formal</p><h3>Email</h3><p>marufhasan8009@gmail.com</p><span class="go">write &#8599;</span></a>
-      <a class="card ch rv" href="https://github.com/ixmaruf" target="_blank" rel="noopener"><p class="card-k">04 / code</p><h3>GitHub — ixmaruf</h3><p>Read the code before you hire the dev.</p><span class="go">open &#8599;</span></a>
-      <button class="card ch rv" id="dcBtn" type="button"><p class="card-k">05 / community</p><h3>Discord</h3><p>maruf_ix — <span id="dcMsg">click to copy</span></p><span class="go" id="dcGo">copy</span></button>
+    <h2 class="s-t rv">say <span class="out">hello.</span></h2>
+    <p class="lede2 rv">Write here or DM directly — fastest reply is on X. For work, include scope + timeline. For promos, include product + goal.</p>
+    <div class="cols2 contact-top">
+      <form class="card form rv" id="msgForm" novalidate>
+        <p class="card-k">&gt; send_a_message</p>
+        <div class="f-row">
+          <div class="f-g"><label for="fName">your name</label><input id="fName" name="name" type="text" autocomplete="name" required maxlength="80" placeholder="Jane Doe"></div>
+          <div class="f-g"><label for="fEmail">your email</label><input id="fEmail" name="email" type="email" autocomplete="email" required maxlength="120" placeholder="you@example.com"></div>
+        </div>
+        <div class="f-g"><label for="fTopic">i'm here about</label>
+          <select id="fTopic" name="topic">
+            <option value="work">dev work</option>
+            <option value="promo">x promotion / collab</option>
+            <option value="web3">web3 community</option>
+            <option value="other">something else</option>
+          </select>
+        </div>
+        <div class="f-g"><label for="fMsg">message</label><textarea id="fMsg" name="message" rows="5" required maxlength="2000" placeholder="scope, timeline, links..."></textarea></div>
+        <input class="hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button class="btn-p" type="submit" id="fSend"><span>send_message</span><span aria-hidden="true">-&gt;</span></button>
+        <p class="f-status" id="fStatus" role="status" aria-live="polite"></p>
+      </form>
+      <div class="chlist">
+        <a class="chrow rv" href="https://x.com/maruf_ix" target="_blank" rel="noopener"><span class="chrow-k">x / dm</span><span class="chrow-v">@maruf_ix</span><span class="go" aria-hidden="true">&#8599;</span></a>
+        <a class="chrow rv" href="https://t.me/maruff_ix" target="_blank" rel="noopener"><span class="chrow-k">telegram</span><span class="chrow-v">@maruff_ix</span><span class="go" aria-hidden="true">&#8599;</span></a>
+        <a class="chrow rv" href="mailto:marufhasan8009@gmail.com"><span class="chrow-k">email</span><span class="chrow-v">marufhasan8009@gmail.com</span><span class="go" aria-hidden="true">&#8599;</span></a>
+        <a class="chrow rv" href="https://github.com/ixmaruf" target="_blank" rel="noopener"><span class="chrow-k">code</span><span class="chrow-v">github.com/ixmaruf</span><span class="go" aria-hidden="true">&#8599;</span></a>
+        <a class="chrow rv" href="https://discord.com/users/792757747891961876" target="_blank" rel="noopener"><span class="chrow-k">discord</span><span class="chrow-v">maruf_ixx — chat</span><span class="go" aria-hidden="true">&#8599;</span></a>
+      </div>
     </div>
   </section>
 

@@ -1,7 +1,7 @@
 /* ============================================================
    MARUF HASAN — v2 interactions
-   mode switch · terminal typer · reveals · counters · filters
-   No dependencies. No network calls. Respects reduced motion.
+   mode switch · terminal typer · reveals · counters · filters · form
+   No dependencies. One optional POST (Web3Forms). Respects reduced motion.
    ============================================================ */
 (function () {
   'use strict';
@@ -12,8 +12,8 @@
 
   /* ---------------- MODE SWITCH ---------------- */
   var ROLES = {
-    dev: '// developer — javascript · ai workflows · shipped web tools',
-    web3: '// web3 builder — 170K+ community · 500+ tutorials · x growth'
+    dev: '// developer — js · ai workflows · web tools',
+    web3: '// web3 — communities · content · x growth'
   };
   var MODE_NAMES = { dev: 'developer', web3: 'web3' };
 
@@ -31,6 +31,8 @@
     });
     var role = $('#roleLine');
     if (role) role.textContent = ROLES[mode];
+    var tt = $('#termTitle');
+    if (tt) tt.textContent = mode === 'web3' ? 'maruf@chain: ~/ledger' : 'maruf@web: ~/whoami';
     var name = $('#modeName');
     if (name) name.textContent = MODE_NAMES[mode];
     applyFilter(mode, true);
@@ -183,14 +185,50 @@
     window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
   });
 
-  /* ---------------- DISCORD COPY ---------------- */
-  var dcBtn = $('#dcBtn');
-  if (dcBtn) dcBtn.addEventListener('click', function () {
-    var msg = $('#dcMsg'), go = $('#dcGo');
-    function done() { if (msg) msg.textContent = 'copied: maruf_ix'; if (go) go.textContent = 'done'; }
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText('maruf_ix').then(done, done);
-    } else { done(); }
+  /* ---------------- CONTACT FORM ----------------
+     Sends via Web3Forms when a key is configured; otherwise falls back
+     to opening the visitor's mail app with a prefilled message.
+     Get a free key: https://web3forms.com → verify email → paste below. */
+  var W3F_KEY = 'REPLACE_WITH_YOUR_KEY';
+  var msgForm = $('#msgForm'), fStatus = $('#fStatus'), fSend = $('#fSend');
+  if (msgForm) msgForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var name = $('#fName').value.trim();
+    var email = $('#fEmail').value.trim();
+    var topic = $('#fTopic').value;
+    var message = $('#fMsg').value.trim();
+    var hp = msgForm.querySelector('.hp');
+    if (hp && hp.value) return; // honeypot: bot
+    function say(t, ok) {
+      if (!fStatus) return;
+      fStatus.textContent = t;
+      fStatus.classList.toggle('err', !ok);
+    }
+    if (name.length < 2) { say('> please add your name', false); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { say('> that email looks off — check it', false); return; }
+    if (message.length < 10) { say('> message too short (10+ chars)', false); return; }
+    if (W3F_KEY.indexOf('REPLACE') === 0) {
+      var s = encodeURIComponent('[portfolio:' + topic + '] from ' + name);
+      var b = encodeURIComponent(message + '\n\n— ' + name + ' <' + email + '>');
+      window.location.href = 'mailto:marufhasan8009@gmail.com?subject=' + s + '&body=' + b;
+      say('> opening your mail app to send...', true);
+      return;
+    }
+    if (fSend) fSend.disabled = true;
+    say('> sending...', true);
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({
+        access_key: W3F_KEY, name: name, email: email,
+        subject: '[portfolio:' + topic + '] ' + name,
+        message: message, from_name: 'marufix.xyz', replyto: email
+      })
+    }).then(function (r) { return r.json(); }).then(function (d) {
+      if (d && d.success) { msgForm.reset(); say('> sent. i reply within 24h.', true); }
+      else { say('> send failed — dm me on x instead', false); }
+    }).catch(function () { say('> network error — dm me on x instead', false); })
+    .then(function () { if (fSend) fSend.disabled = false; });
   });
 
   /* ---------------- FOOTER YEAR ---------------- */
