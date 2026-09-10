@@ -139,19 +139,20 @@
     els.forEach(function (el) { io.observe(el); });
   }
 
-  /* ---------------- HANKO STAMP ---------------- */
+  /* ---------------- HANKO STAMPS ---------------- */
   function initStamp() {
-    var seal = $('#hanko');
-    if (!seal || reduceMotion || !('IntersectionObserver' in window)) {
-      if (seal) seal.classList.add('stamped');
+    var seals = $$('.hanko');
+    if (!seals.length) return;
+    if (reduceMotion || !('IntersectionObserver' in window)) {
+      seals.forEach(function (s) { s.classList.add('stamped'); });
       return;
     }
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
-        if (en.isIntersecting) { seal.classList.add('stamped'); io.disconnect(); }
+        if (en.isIntersecting) { en.target.classList.add('stamped'); io.unobserve(en.target); }
       });
     }, { threshold: 0.7 });
-    io.observe(seal);
+    seals.forEach(function (s) { io.observe(s); });
   }
 
   /* ---------------- BRUSH STROKE DRAW ---------------- */
@@ -243,9 +244,23 @@
     window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
   });
 
+  function fallbackCopy(text) {
+    try {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.setAttribute('readonly', '');
+      ta.style.position = 'absolute';
+      ta.style.left = '-9999px';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+    } catch (e) {}
+  }
+
   /* ---------------- CONTACT FORM ----------------
-     Web3Forms when a key is configured; otherwise opens the
-     visitor's mail app with a prefilled message. Never fakes success.
+     Web3Forms when a key is configured; otherwise shows the composed
+     message with one-tap send/copy buttons. Never fakes success.
      Free key: https://web3forms.com (verify email, paste below). */
   var W3F_KEY = 'REPLACE_WITH_YOUR_KEY';
   var msgForm = $('#msgForm'), fStatus = $('#fStatus'), fSend = $('#fSend');
@@ -266,10 +281,25 @@
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { say('> that email looks off — check it', false); return; }
     if (message.length < 10) { say('> message too short (10+ chars)', false); return; }
     if (W3F_KEY.indexOf('REPLACE') === 0) {
-      var s = encodeURIComponent('[portfolio:' + topic + '] from ' + name);
-      var b = encodeURIComponent(message + '\n\n— ' + name + ' <' + email + '>');
-      window.location.href = 'mailto:marufhasan8009@gmail.com?subject=' + s + '&body=' + b;
-      say('> opening your mail app to send...', true);
+      var s = '[portfolio:' + topic + '] from ' + name;
+      var b = message + '\n\n— ' + name + ' <' + email + '>';
+      var fb = $('#fFallback'), prev = $('#fPrev'), mb = $('#fMailBtn'), cb = $('#fCopyBtn');
+      if (fb && prev && mb) {
+        prev.textContent = 'to: marufhasan8009@gmail.com\nsubject: ' + s + '\n\n' + b;
+        mb.href = 'mailto:marufhasan8009@gmail.com?subject=' + encodeURIComponent(s) + '&body=' + encodeURIComponent(b);
+        fb.hidden = false;
+        say('> tap below — takes 5 seconds, nothing is stuck', true);
+        if (cb) cb.onclick = function () {
+          var done = function () { say('> copied — paste it anywhere to reach me', true); };
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(prev.textContent).then(done, function () { fallbackCopy(prev.textContent); done(); });
+          } else { fallbackCopy(prev.textContent); done(); }
+        };
+        try { fb.scrollIntoView({ block: 'nearest', behavior: reduceMotion ? 'auto' : 'smooth' }); } catch (e2) {}
+      } else {
+        window.location.href = 'mailto:marufhasan8009@gmail.com?subject=' + encodeURIComponent(s) + '&body=' + encodeURIComponent(b);
+        say('> opening your mail app to send...', true);
+      }
       return;
     }
     if (fSend) fSend.disabled = true;
@@ -283,7 +313,12 @@
         message: message, from_name: 'marufix.xyz', replyto: email
       })
     }).then(function (r) { return r.json(); }).then(function (d) {
-      if (d && d.success) { msgForm.reset(); say('> sent. i reply within 24h.', true); }
+      if (d && d.success) {
+        msgForm.reset();
+        var fb2 = $('#fFallback');
+        if (fb2) fb2.hidden = true;
+        say('> sent. i reply within 24h.', true);
+      }
       else { say('> send failed — dm me on x instead', false); }
     }).catch(function () { say('> network error — dm me on x instead', false); })
     .then(function () { if (fSend) fSend.disabled = false; });

@@ -173,6 +173,7 @@ html[data-mode="web3"] .w3-lede { font-family: var(--f-d); font-size: 19px; colo
   75% { transform: scale(1.03) rotate(-4deg); }
   100% { opacity: 1; transform: scale(1) rotate(-3deg); }
 }
+.hanko.dev-seal { flex-direction: row; font-family: var(--f-m); font-size: 23px; font-weight: 700; letter-spacing: 0; width: 84px; height: 84px; }
 .seal-t { font-family: var(--f-m); font-size: 13px; color: var(--mut); margin: 0; line-height: 1.8; }
 
 .devchips { display: flex; flex-wrap: wrap; gap: 9px; margin-bottom: 30px; }
@@ -185,7 +186,6 @@ html[data-mode="web3"] .w3-lede { font-family: var(--f-d); font-size: 19px; colo
 .slip:nth-child(2) { transform: translateY(10px); }
 .slip-n { display: block; font-family: var(--f-b); font-weight: 800; font-size: 30px; letter-spacing: 0; color: var(--acc-deep); }
 .slip-l { display: block; font-family: var(--f-m); font-size: 10.5px; color: var(--mut); margin-top: 5px; text-transform: uppercase; letter-spacing: .5px; }
-.ghost { position: absolute; right: -6px; bottom: -24px; font-family: var(--f-jp); font-size: 92px; line-height: 1; color: var(--ink); opacity: .06; pointer-events: none; }
 
 .cta { display: flex; gap: 12px; flex-wrap: wrap; }
 .btn-p, .btn-s { font-family: var(--f-m); font-size: 14.5px; text-decoration: none; padding: 15px 24px; display: inline-flex; gap: 10px; align-items: center; border: 1.5px solid var(--ink); transition: transform .25s var(--ease), box-shadow .25s var(--ease), background-color .25s; }
@@ -212,7 +212,9 @@ html[data-mode="web3"] .w3-lede { font-family: var(--f-d); font-size: 19px; colo
 .spec .ok { color: var(--acc-deep); font-weight: 700; }
 .hero-vtext { position: absolute; right: 2px; top: 64px; writing-mode: vertical-rl; font-family: var(--f-jp); font-size: 15px; letter-spacing: 6px; color: var(--dim); }
 
-/* seigaiha wave band + brush stroke */
+/* blueprint band (dev) — mirrors the seigaiha band */
+.devband { height: 26px; border-top: 1.5px solid var(--ink); border-bottom: 1.5px solid var(--ink); background-color: var(--acc-soft); background-image: repeating-linear-gradient(0deg, rgba(30,107,69,.28) 0 1px, transparent 1px 12px), repeating-linear-gradient(90deg, rgba(30,107,69,.28) 0 1px, transparent 1px 12px); animation: drift 40s linear infinite; }
+/* seigaiha wave band (web3) */
 .seigaiha { height: 26px; border-top: 1.5px solid var(--ink); border-bottom: 1.5px solid var(--ink); background-color: var(--acc-soft); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='26'%3E%3Cg fill='none' stroke='%23C73E1D' stroke-width='1.6' opacity='0.55'%3E%3Ccircle cx='0' cy='26' r='11'/%3E%3Ccircle cx='0' cy='26' r='7'/%3E%3Ccircle cx='0' cy='26' r='3'/%3E%3Ccircle cx='24' cy='26' r='11'/%3E%3Ccircle cx='24' cy='26' r='7'/%3E%3Ccircle cx='24' cy='26' r='3'/%3E%3Ccircle cx='48' cy='26' r='11'/%3E%3Ccircle cx='48' cy='26' r='7'/%3E%3Ccircle cx='48' cy='26' r='3'/%3E%3C/g%3E%3C/svg%3E"); background-repeat: repeat-x; animation: drift 46s linear infinite; }
 @keyframes drift { to { background-position-x: 48px; } }
 .brush { padding-top: 26px; }
@@ -295,6 +297,12 @@ html[data-mode="web3"] .w3-rows h3 { font-family: var(--f-d); font-weight: 700; 
 .form .btn-p:disabled { opacity: .55; cursor: wait; }
 .f-status { font-family: var(--f-m); font-size: 13.5px; color: var(--acc-deep); margin: 0; min-height: 22px; font-weight: 500; }
 .f-status.err { color: #B3261E; }
+.f-fallback { border: 1.5px dashed var(--acc); background: var(--paper); padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+.f-fallback[hidden] { display: none; }
+.ff-t { font-family: var(--f-m); font-size: 12.5px; color: var(--mut); margin: 0; }
+.ff-prev { font-family: var(--f-m); font-size: 12px; background: var(--card); border: 1px solid var(--line); padding: 12px; margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; max-height: 150px; overflow: auto; }
+.ff-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+.ff-btns .btn-p, .ff-btns .btn-s { padding: 12px 18px; font-size: 13px; }
 
 .chlist { display: flex; flex-direction: column; gap: 12px; }
 .chrow { display: flex; align-items: center; gap: 15px; text-decoration: none; background: var(--card); border: 1.5px solid var(--ink); padding: 16px 18px; transition: transform .25s var(--ease), box-shadow .25s var(--ease); }
