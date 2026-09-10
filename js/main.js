@@ -293,7 +293,7 @@
      Web3Forms when a key is configured; otherwise shows the composed
      message with one-tap send/copy buttons. Never fakes success.
      Free key: https://web3forms.com (verify email, paste below). */
-  var W3F_KEY = 'REPLACE_WITH_YOUR_KEY';
+  var W3F_KEY = 'db386592-bc6e-437b-88f3-c2bae1a01f88';
   var msgForm = $('#msgForm'), fStatus = $('#fStatus'), fSend = $('#fSend');
   if (msgForm) msgForm.addEventListener('submit', function (e) {
     e.preventDefault();
