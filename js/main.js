@@ -1,7 +1,9 @@
 /* ============================================================
-   MARUF HASAN — v2 interactions
-   mode switch · terminal typer · reveals · counters · filters · form
-   No dependencies. One optional POST (Web3Forms). Respects reduced motion.
+   MARUF HASAN — v3 interactions
+   mode switch (full content swap) · typer · reveals · counters
+   contact form (Web3Forms w/ honest fallback) · menu · spy
+   No dependencies. Respects reduced motion. Content is visible
+   without JS; animations only enhance.
    ============================================================ */
 (function () {
   'use strict';
@@ -9,25 +11,27 @@
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var $ = function (s, c) { return (c || document).querySelector(s); };
   var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
+  var root = document.documentElement;
+  var main = $('main');
 
-  /* ---------------- MODE SWITCH ---------------- */
+  /* ---------------- MODE SWITCH (full swap) ---------------- */
   var ROLES = {
-    dev: '// developer — js · ai workflows · web tools',
-    web3: '// web3 — communities · content · x growth'
+    dev: '// developer — web apps · ai workflows · pwa',
+    web3: '// web3 — communities · content · growth'
   };
   var MODE_NAMES = { dev: 'developer', web3: 'web3' };
 
   function currentMode() {
-    try { return localStorage.getItem('mh-mode') || 'dev'; } catch (e) { return 'dev'; }
+    try {
+      var m = localStorage.getItem('mh-mode');
+      return (m === 'dev' || m === 'web3') ? m : 'dev';
+    } catch (e) { return 'dev'; }
   }
 
-  function setMode(mode, save) {
-    if (mode !== 'dev' && mode !== 'web3') mode = 'dev';
-    document.body.setAttribute('data-mode', mode);
-    if (save !== false) { try { localStorage.setItem('mh-mode', mode); } catch (e) {} }
+  function paintMode(mode) {
+    root.setAttribute('data-mode', mode);
     $$('[data-setmode]').forEach(function (b) {
-      var on = b.getAttribute('data-setmode') === mode;
-      b.classList.toggle('on', on);
+      b.classList.toggle('on', b.getAttribute('data-setmode') === mode);
     });
     var role = $('#roleLine');
     if (role) role.textContent = ROLES[mode];
@@ -35,49 +39,41 @@
     if (tt) tt.textContent = mode === 'web3' ? 'maruf@chain: ~/ledger' : 'maruf@web: ~/whoami';
     var name = $('#modeName');
     if (name) name.textContent = MODE_NAMES[mode];
-    applyFilter(mode, true);
+  }
+
+  function setMode(mode, instant) {
+    if (mode !== 'dev' && mode !== 'web3') mode = 'dev';
+    try { localStorage.setItem('mh-mode', mode); } catch (e) {}
     closeMenu();
+    if (instant || reduceMotion || !main) { paintMode(mode); return; }
+    main.classList.add('swap');
+    setTimeout(function () {
+      paintMode(mode);
+      requestAnimationFrame(function () { main.classList.remove('swap'); });
+    }, 200);
   }
 
   $$('[data-setmode]').forEach(function (b) {
     b.addEventListener('click', function () { setMode(b.getAttribute('data-setmode')); });
   });
 
-  /* ---------------- PROJECT FILTER ---------------- */
-  var activeFilter = 'dev';
-  function applyFilter(f, fromMode) {
-    activeFilter = f;
-    $$('[data-filter]').forEach(function (b) {
-      b.classList.toggle('on', b.getAttribute('data-filter') === f);
-    });
-    $$('.p[data-cat]').forEach(function (card) {
-      var show = (f === 'all') || (card.getAttribute('data-cat') === f);
-      card.classList.toggle('hide', !show);
-    });
-    if (!fromMode) { try { sessionStorage.setItem('mh-filter', f); } catch (e) {} }
-  }
-  $$('[data-filter]').forEach(function (b) {
-    b.addEventListener('click', function () { applyFilter(b.getAttribute('data-filter'), false); });
-  });
-
   /* ---------------- TERMINAL TYPER ---------------- */
   var SCRIPTS = {
-    dev: ['$ whoami', 'maruf_hasan — developer', '$ cat ./focus.txt', 'js · ai agent workflows · shipped web tools', '$ ./ship --prod', '> deployed · zero console errors'],
-    web3: ['$ whoami', 'maruf_hasan — community builder', '$ cat ./record.txt', '170K+ members · 500+ tutorials · 5 yrs', '$ ./grow --community', '> engagement: healthy']
+    dev: ['$ whoami', 'maruf_hasan — developer', '$ cat ./focus.txt', 'web apps · ai workflows · pwa', '$ ./ship --prod', '> deployed · tested · done'],
+    web3: ['$ whoami', 'maruf_hasan — community builder', '$ cat ./record.txt', '170K+ members · 500+ tutorials', '$ ./grow --community', '> engagement: healthy']
   };
   var typer = $('#typer');
   function runTyper() {
     if (!typer) return;
-    if (reduceMotion) {
-      typer.textContent = SCRIPTS[currentMode()].join('\n');
-      return;
+    function script() {
+      return SCRIPTS[root.getAttribute('data-mode')] || SCRIPTS.dev;
     }
-    var lines, li = 0, ci = 0, out = '';
-    function script() { return SCRIPTS[document.body.getAttribute('data-mode')] || SCRIPTS.dev; }
+    if (reduceMotion) { typer.textContent = script().join('\n'); return; }
+    var li = 0, ci = 0, out = '';
     function tick() {
-      lines = script();
+      var lines = script();
       if (li >= lines.length) {
-        setTimeout(function () { li = 0; ci = 0; out = ''; tick(); }, 4200);
+        setTimeout(function () { li = 0; ci = 0; out = ''; tick(); }, 4600);
         return;
       }
       var line = lines[li];
@@ -86,55 +82,55 @@
       typer.textContent = done;
       if (ci >= line.length) {
         li++; ci = 0; out = done + '\n';
-        setTimeout(tick, li % 2 === 0 ? 650 : 350);
+        setTimeout(tick, li % 2 === 0 ? 700 : 380);
       } else {
-        setTimeout(tick, line.charAt(0) === '$' ? 45 : 22);
+        setTimeout(tick, line.charAt(0) === '$' ? 48 : 24);
       }
     }
-    // restart cleanly whenever mode flips
-    new MutationObserver(function () { li = 0; ci = 0; out = ''; }).observe(document.body, { attributes: true, attributeFilter: ['data-mode'] });
+    new MutationObserver(function () { li = 0; ci = 0; out = ''; })
+      .observe(root, { attributes: true, attributeFilter: ['data-mode'] });
     tick();
   }
 
-  /* ---------------- SCROLL REVEALS ---------------- */
+  /* ---------------- SCROLL REVEALS (JS-owned start state) ---------------- */
   function initReveals() {
     var els = $$('.rv');
     if (!els.length) return;
+    root.classList.add('js-anim');
     if (reduceMotion || !('IntersectionObserver' in window)) {
       els.forEach(function (el) { el.classList.add('on'); });
       return;
     }
+    els.forEach(function (el) { el.classList.add('pre'); });
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
-        if (en.isIntersecting) { en.target.classList.add('on'); io.unobserve(en.target); }
+        if (en.isIntersecting) {
+          en.target.classList.remove('pre');
+          en.target.classList.add('on');
+          io.unobserve(en.target);
+        }
       });
-    }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+    }, { threshold: 0.1, rootMargin: '0px 0px -24px 0px' });
     els.forEach(function (el) { io.observe(el); });
   }
 
-  /* ---------------- COUNTERS ---------------- */
+  /* ---------------- COUNTERS (stable historical numbers only) ---------------- */
   function initCounters() {
     var nums = $$('[data-count]');
     if (!nums.length) return;
-    function finish(el) {
-      var dec = parseInt(el.getAttribute('data-dec') || '0', 10);
-      var target = parseFloat(el.getAttribute('data-count'));
-      el.textContent = dec ? target.toFixed(dec) : String(Math.round(target));
-    }
+    function finish(el) { el.textContent = el.getAttribute('data-count'); }
     if (reduceMotion || !('IntersectionObserver' in window)) { nums.forEach(finish); return; }
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
         if (!en.isIntersecting) return;
         io.unobserve(en.target);
         var el = en.target;
-        var dec = parseInt(el.getAttribute('data-dec') || '0', 10);
         var target = parseFloat(el.getAttribute('data-count'));
         var t0 = performance.now(), dur = 1400;
         (function step(now) {
           var p = Math.min((now - t0) / dur, 1);
           var e = 1 - Math.pow(1 - p, 4);
-          var v = target * e;
-          el.textContent = dec ? v.toFixed(dec) : String(Math.floor(v));
+          el.textContent = String(Math.floor(target * e));
           if (p < 1) requestAnimationFrame(step); else finish(el);
         })(t0);
       });
@@ -186,9 +182,9 @@
   });
 
   /* ---------------- CONTACT FORM ----------------
-     Sends via Web3Forms when a key is configured; otherwise falls back
-     to opening the visitor's mail app with a prefilled message.
-     Get a free key: https://web3forms.com → verify email → paste below. */
+     Web3Forms when a key is configured; otherwise opens the
+     visitor's mail app with a prefilled message. Never fakes success.
+     Free key: https://web3forms.com (verify email, paste below). */
   var W3F_KEY = 'REPLACE_WITH_YOUR_KEY';
   var msgForm = $('#msgForm'), fStatus = $('#fStatus'), fSend = $('#fSend');
   if (msgForm) msgForm.addEventListener('submit', function (e) {
@@ -198,7 +194,7 @@
     var topic = $('#fTopic').value;
     var message = $('#fMsg').value.trim();
     var hp = msgForm.querySelector('.hp');
-    if (hp && hp.value) return; // honeypot: bot
+    if (hp && hp.value) return;
     function say(t, ok) {
       if (!fStatus) return;
       fStatus.textContent = t;
@@ -236,11 +232,7 @@
   if (yr) yr.textContent = String(new Date().getFullYear());
 
   /* ---------------- INIT ---------------- */
-  setMode(currentMode(), false);
-  try {
-    var f = sessionStorage.getItem('mh-filter');
-    if (f === 'all' || f === 'dev' || f === 'web3') applyFilter(f, false);
-  } catch (e) {}
+  paintMode(currentMode());
   runTyper();
   initReveals();
   initCounters();

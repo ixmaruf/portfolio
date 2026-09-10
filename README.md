@@ -1,59 +1,59 @@
 # MARUF HASAN — Developer & Web3 Community Builder
 
-Live: **https://marufix.xyz/** · Deployed via GitHub Pages (push to `main` = deploy)
+Live: **https://marufix.xyz/** · GitHub Pages (push to `main` = deploy)
 
-A dual-identity portfolio for **Maruf Hasan**: developer shipping web tools
-(JS, AI workflows, Supabase, Cloudflare Workers) and Web3 community builder
-(170K+ members managed, 500+ tutorials, 5+ years in crypto).
+## Concept — v3 "paper & ink"
 
-## Concept — "dual-boot", no confusion
+Light, matte, editorial single-page site with **two fully separate modes**.
+The header switcher flips `data-mode` on `<html>` (set pre-paint, no flash):
 
-One shell, two modes. A header switcher (`</> dev` / `web3`) flips the accent
-color, hero role line, terminal script and project filter — the visitor always
-knows which mode they are in. About + Stack show both crafts side by side.
+- `dev` — warm paper + matte green. Zero web3 traces.
+- `web3` — cool paper + matte violet. Zero dev traces.
+
+Separation is CSS-driven: `html[data-mode="dev"] [data-for="web3"] { display:none }`
+and vice versa. No project names, repos or code links anywhere on the site
+(by owner request). Numbers shown are completed historical facts only —
+nothing that needs live updating.
 
 ## Design system
 
-- Sharp everything — `border-radius: 0` enforced globally, zero exceptions
-- 2 fonts only: Space Grotesk (display) + JetBrains Mono (terminal)
-- Dark terminal theme · dev = green `#3DDC84`, web3 = amber `#FFB020`
-- No frameworks, no canvas pets, no preloaders — HTML + CSS + vanilla JS
-- Subtle motion only (reveals, counters, typing terminal, ticker),
-  fully disabled under `prefers-reduced-motion`
-
-## Sections
-
-1. Hero — typed terminal, stats, photo spec-sheet
-2. About — developer card + web3 card
-3. Stack — dev arsenal + web3 arsenal
-4. Work — filterable: 4 dev builds, 4 web3 entries
-5. Promo & Collab — X-focused services, process, DM CTAs
-6. Journey — 2018 → 2026 timeline + education
-7. Contact — direct channels only (no dead form backends)
+- Warm/cool paper backgrounds, ink text, hairlines, hard offset shadows
+- Sharp corners enforced globally (`border-radius: 0 !important`)
+- 2 fonts: Space Grotesk (display) + JetBrains Mono (labels)
+- One accent per mode, film-grain overlay (SVG noise, matte finish)
+- Editorial numbered rows instead of card grids
+- Content visible without JS; JS only enhances (reveals own their start state)
+- `prefers-reduced-motion` respected everywhere
 
 ## Files
 
 ```
-index.html            Main page
-404.html              Themed 404 (GitHub Pages picks it up automatically)
-css/style.css         Whole design system
-js/main.js            Mode, typer, reveals, counters, filters, menu
+index.html            Page (dual content via data-for="dev|web3")
+404.html              Themed 404
+css/style.css         Full design system + both themes
+js/main.js            Mode, typer, reveals, counters, form, menu
 images/profile.webp   Portrait
-favicon.svg           Terminal "M>_" mark
+favicon.svg           Terminal mark
 CNAME                 marufix.xyz (do not delete)
 ```
 
-## Local preview
+## Contact form
+
+Posts to Web3Forms. Needs a free access key or it falls back to opening
+the visitor's mail app (never fakes success):
+
+1. https://web3forms.com → register `marufhasan8009@gmail.com` → verify
+2. Paste the key into `W3F_KEY` in `js/main.js`
+3. Push
+
+## Local preview & QA
 
 ```sh
 python -m http.server 8000
-# open http://127.0.0.1:8000/
 ```
 
-## QA checklist (run before push)
-
-- [ ] DevTools console: 0 errors
-- [ ] No horizontal overflow at 390px and 1440px
-- [ ] Mode switch flips accent + filters projects
+- [ ] Console: 0 errors
+- [ ] No horizontal overflow at 390px / 1440px, both modes
+- [ ] Dev mode shows no web3 content and vice versa (check via DOM)
 - [ ] No `border-radius` in computed styles
-- [ ] All outbound links have no trailing spaces
+- [ ] Form validation messages appear on bad input
