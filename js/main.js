@@ -16,8 +16,8 @@
 
   /* ---------------- MODE SWITCH (full swap) ---------------- */
   var ROLES = {
-    dev: '// developer — web apps · ai workflows · pwa',
-    web3: '// web3 — communities · content · growth'
+    dev: '// developer: web apps · ai workflows · pwa',
+    web3: '// web3: communities · content · growth'
   };
   var MODE_NAMES = { dev: 'developer', web3: 'web3' };
   var curSection = '';
@@ -99,7 +99,7 @@
   });
 
   /* ---------------- TERMINAL TYPER (dev mode) ---------------- */
-  var SCRIPT = ['$ whoami', 'maruf_hasan — developer', '$ cat ./focus.txt', 'web apps · ai workflows · pwa', '$ ./ship --prod', '> deployed · tested · done'];
+  var SCRIPT = ['$ whoami', 'maruf_hasan // developer', '$ cat ./focus.txt', 'web apps · ai workflows · pwa', '$ ./ship --prod', '> deployed · tested · done'];
   var typer = $('#typer');
   function runTyper() {
     if (!typer) return;
@@ -237,13 +237,14 @@
     var y = window.scrollY || window.pageYOffset;
     if (toTop) toTop.classList.toggle('show', y > 600);
     if (spySecs.length) {
-      var pos = y + 140, cur = spySecs[0];
-      spySecs.forEach(function (s) { if (s.offsetTop <= pos) cur = s; });
+      var pos = y + 140, cur = null;
+      spySecs.forEach(function (s) { if (pos >= s.offsetTop && pos < s.offsetTop + s.offsetHeight) cur = s; });
+      var cid = cur ? cur.id : '';
       spyLinks.forEach(function (a) {
-        a.classList.toggle('act', secIdFromHref(a.getAttribute('href')) === cur.id);
+        a.classList.toggle('act', !!cur && secIdFromHref(a.getAttribute('href')) === cur.id);
       });
-      if (Date.now() > suppressSpyUntil && curSection !== cur.id) {
-        curSection = cur.id;
+      if (Date.now() > suppressSpyUntil && curSection !== cid) {
+        curSection = cid;
         try { history.replaceState(null, '', canonURL()); } catch (err2) {}
       }
     }
@@ -309,19 +310,19 @@
       fStatus.classList.toggle('err', !ok);
     }
     if (name.length < 2) { say('> please add your name', false); return; }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { say('> that email looks off — check it', false); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { say('> that email looks off. Check it', false); return; }
     if (message.length < 10) { say('> message too short (10+ chars)', false); return; }
     if (W3F_KEY.indexOf('REPLACE') === 0) {
       var s = '[portfolio:' + topic + '] from ' + name;
-      var b = message + '\n\n— ' + name + ' <' + email + '>';
+      var b = message + '\n\n- ' + name + ' <' + email + '>';
       var fb = $('#fFallback'), prev = $('#fPrev'), mb = $('#fMailBtn'), cb = $('#fCopyBtn');
       if (fb && prev && mb) {
         prev.textContent = 'to: marufhasan8009@gmail.com\nsubject: ' + s + '\n\n' + b;
         mb.href = 'mailto:marufhasan8009@gmail.com?subject=' + encodeURIComponent(s) + '&body=' + encodeURIComponent(b);
         fb.hidden = false;
-        say('> tap below — takes 5 seconds, nothing is stuck', true);
+        say('> tap below. Takes 5 seconds, nothing is stuck', true);
         if (cb) cb.onclick = function () {
-          var done = function () { say('> copied — paste it anywhere to reach me', true); };
+          var done = function () { say('> copied. Paste it anywhere to reach me', true); };
           if (navigator.clipboard && navigator.clipboard.writeText) {
             navigator.clipboard.writeText(prev.textContent).then(done, function () { fallbackCopy(prev.textContent); done(); });
           } else { fallbackCopy(prev.textContent); done(); }
@@ -350,8 +351,8 @@
         if (fb2) fb2.hidden = true;
         say('> sent. i reply within 24h.', true);
       }
-      else { say('> send failed — dm me on x instead', false); }
-    }).catch(function () { say('> network error — dm me on x instead', false); })
+      else { say('> send failed. DM me on x instead', false); }
+    }).catch(function () { say('> network error. DM me on x instead', false); })
     .then(function () { if (fSend) fSend.disabled = false; });
   });
 
@@ -361,6 +362,12 @@
 
   /* ---------------- INIT ---------------- */
   paintMode(currentMode());
+  (function () {
+    try {
+      var qs = new URLSearchParams(location.search);
+      if (qs.get('m') || qs.get('t')) history.replaceState(null, '', canonURL());
+    } catch (e) {}
+  })();
   (function () {
     var t = window.__MH_T;
     if (t && document.getElementById(t)) {
